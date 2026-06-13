@@ -1,0 +1,45 @@
+name: Luma FinOps
+description: Financial operations data for the Luma event platform API, covering platform fees, subscription costs, and cost optimization guidance.
+url: https://luma.com/pricing
+created: '2026-06-13'
+modified: '2026-06-13'
+costs:
+  - name: Free Plan Ticket Processing Fee
+    description: Platform fee applied to paid ticket sales on the Free plan.
+    type: percentageFee
+    percentage: 5.0
+    appliesTo: paid ticket sales
+    plan: Free
+    notes: This fee is eliminated by upgrading to Luma Plus.
+  - name: Luma Plus Subscription
+    description: Monthly cost of the Luma Plus subscription required for API access, billed annually.
+    type: subscription
+    amount: 59.00
+    currency: USD
+    billingCycle: annually
+    plan: Luma Plus
+    notes: Represents a 14% savings versus monthly billing. API access requires an active Luma Plus subscription.
+  - name: Luma Plus Ticket Processing Fee
+    description: Platform fee on ticket sales for Luma Plus subscribers.
+    type: percentageFee
+    percentage: 0.0
+    appliesTo: paid ticket sales
+    plan: Luma Plus
+    notes: 0% platform fee is a key benefit of the Luma Plus plan.
+optimization:
+  - recommendation: Upgrade to Luma Plus for high-volume ticket sales
+    description: If ticket sales revenue exceeds approximately $1,180/month (5% fee on $1,180 = $59), the Luma Plus subscription pays for itself by eliminating the 5% platform fee.
+    savingsType: percentageFee
+  - recommendation: Use annual billing for Luma Plus
+    description: Annual billing provides a 14% discount compared to monthly billing for the Luma Plus plan.
+    savingsType: subscription
+  - recommendation: Use calendar-scoped API keys where possible
+    description: Calendar API keys allow up to 200 requests per minute per calendar. If multiple calendars are involved, consider organization keys for 500 requests per minute.
+    savingsType: rateLimit
+apiRequirements:
+  - name: API Access Subscription
+    description: An active Luma Plus subscription is required to use the Luma REST API. The Free plan does not include API access.
+    minimumPlan: Luma Plus
+    cost: 59.00
+    currency: USD
+    billingCycle: annually

@@ -1,0 +1,69 @@
+name: Luma
+description: Modern event hosting platform with REST APIs for creating events, managing ticketing, tracking attendance, and building community around live and virtual events.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Events
+  - Event Management
+  - Ticketing
+  - Community
+  - Calendars
+  - Guests
+  - Attendance
+apis:
+  - name: Luma API
+    description: REST API for creating and managing events, calendars, guests, tickets, coupons, tags, contacts, memberships, hosts, and webhooks on the Luma event platform.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.luma.com/reference
+    baseURL: https://public-api.luma.com
+    tags:
+      - Events
+      - Calendars
+      - Guests
+      - Tickets
+      - Webhooks
+      - Coupons
+      - Memberships
+    properties:
+      - type: Documentation
+        url: https://docs.luma.com/reference
+      - type: OpenAPI
+        url: https://docs.luma.com/llms.txt
+      - type: Authentication
+        url: https://help.luma.com/p/luma-api
+      - type: Plans
+        url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/plans/plans.yml
+      - type: RateLimits
+        url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/rate-limits/rate-limits.yml
+      - type: FinOps
+        url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/finops/finops.yml
+    contact:
+      - FN: Luma Support
+        email: support@lu.ma
+        url: https://help.luma.com/
+common:
+  - type: Portal
+    url: https://docs.luma.com
+  - type: Documentation
+    url: https://docs.luma.com/reference
+  - type: Pricing
+    url: https://luma.com/pricing
+  - type: HelpCenter
+    url: https://help.luma.com/
+  - type: APIOverview
+    url: https://help.luma.com/p/luma-api
+  - type: SDKEmbedExamples
+    url: https://github.com/luma-team/examples
+  - type: GitHubOrganization
+    url: https://github.com/luma-team
+  - type: X
+    url: https://x.com/LumaHQ
+  - type: StatusPage
+    url: https://status.lu.ma
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
+    email: info@apievangelist.com

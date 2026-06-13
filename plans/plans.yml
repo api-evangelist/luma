@@ -1,0 +1,77 @@
+name: Luma Pricing Plans
+description: Pricing plans for the Luma event management platform, including API access requirements.
+url: https://luma.com/pricing
+created: '2026-06-13'
+modified: '2026-06-13'
+plans:
+  - name: Free
+    description: Free plan with unlimited events and guests. No API access.
+    url: https://luma.com/pricing
+    price: 0.00
+    currency: USD
+    billingCycle: monthly
+    features:
+      - Unlimited events and guests
+      - Up to 500 weekly invites
+      - Payment processing with 5% platform fee
+      - Up to 3 calendar admins
+      - Guest check-in
+      - Email, SMS, push, WhatsApp communications
+      - QR code check-in
+      - Event analytics
+      - Zoom integration
+    apiAccess: false
+  - name: Luma Plus
+    description: Paid plan with 0% platform fees, higher invite limits, and full API access.
+    url: https://luma.com/pricing
+    price: 59.00
+    currency: USD
+    billingCycle: annually
+    features:
+      - Everything in Free plan
+      - 0% platform fee on ticket sales
+      - 5,000 weekly invites
+      - Tax collection capability
+      - Check-in manager role
+      - Custom event page URLs
+      - Separate first/last name collection
+      - 5 calendar admins (expandable)
+      - Zapier automation
+      - API access
+      - Priority support
+    apiAccess: true
+    addOns:
+      - name: 10,000 weekly sends
+        price: 50.00
+        currency: USD
+        billingCycle: monthly
+      - name: 25,000 weekly sends
+        price: 200.00
+        currency: USD
+        billingCycle: monthly
+      - name: 50,000 weekly sends
+        price: 400.00
+        currency: USD
+        billingCycle: monthly
+      - name: 75,000 weekly sends
+        price: 600.00
+        currency: USD
+        billingCycle: monthly
+      - name: 100,000 weekly sends
+        price: 800.00
+        currency: USD
+        billingCycle: monthly
+  - name: Enterprise
+    description: Custom enterprise plan with organization accounts, SSO, advanced integrations, and custom development.
+    url: https://luma.com/pricing
+    price: custom
+    currency: USD
+    billingCycle: custom
+    features:
+      - Everything in Luma Plus
+      - Organization accounts
+      - Security controls
+      - Single Sign-On (SSO)
+      - Advanced integrations
+      - Custom development
+    apiAccess: true

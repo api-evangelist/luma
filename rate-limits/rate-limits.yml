@@ -1,0 +1,33 @@
+name: Luma API Rate Limits
+description: Rate limits for the Luma public REST API, applied per calendar or per organization depending on the API key type.
+url: https://help.luma.com/p/luma-api
+created: '2026-06-13'
+modified: '2026-06-13'
+rateLimits:
+  - name: Calendar API Key Limit
+    description: Rate limit applied to requests made with a calendar-specific API key or OAuth token.
+    scope: calendar
+    keyType: calendar
+    requestsPerMinute: 200
+    requestsPerHour: null
+    requestsPerDay: null
+    shared: true
+    notes: This limit is shared across all read and write requests for a given calendar API key or OAuth token.
+  - name: Organization API Key Limit
+    description: Rate limit applied to requests made with an organization-level API key.
+    scope: organization
+    keyType: organization
+    requestsPerMinute: 500
+    requestsPerHour: null
+    requestsPerDay: null
+    shared: true
+    notes: Organization API keys have a higher rate limit to support managing multiple calendars.
+errorHandling:
+  - statusCode: 429
+    message: Too Many Requests
+    retryAfter: 60
+    notes: Exceeding the rate limit triggers a 429 response with a one-minute lockout period before requests are accepted again.
+headers:
+  - name: x-luma-api-key
+    description: API key header required on every request for authentication.
+    required: true
