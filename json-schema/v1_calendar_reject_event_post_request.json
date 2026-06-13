@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendar_reject_event_post_request.json",
+  "title": "V1 Calendar Reject Event Post Request",
+  "type": "object",
+  "properties": {
+    "calendar_event_id": {
+      "type": "string",
+      "description": "Calendar event ID (starts with `calev-`). You can also pass the Luma event ID (starts with `evt-`) \u2014 we'll resolve it to the active submission on your calendar."
+    },
+    "message": {
+      "description": "Optional message to send to the submitter explaining the rejection.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "calendar_event_id"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_hosts_add_post_200_response.json",
+  "title": "V1 Events Hosts Add Post 200 Response",
+  "type": "object",
+  "description": "Empty response",
+  "properties": {},
+  "additionalProperties": false,
+  "x-stainless-empty-object": true
+}

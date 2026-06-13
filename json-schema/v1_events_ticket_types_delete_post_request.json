@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_ticket_types_delete_post_request.json",
+  "title": "V1 Events Ticket Types Delete Post Request",
+  "type": "object",
+  "properties": {
+    "event_ticket_type_id": {
+      "type": "string",
+      "description": "Ticket type ID, this usually starts with ttype-"
+    }
+  },
+  "required": [
+    "event_ticket_type_id"
+  ]
+}

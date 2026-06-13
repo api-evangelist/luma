@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_update_post_request.json",
+  "title": "V1 Calendars Update Post Request",
+  "type": "object",
+  "properties": {
+    "calendar_id": {
+      "type": "string",
+      "description": "Calendar ID, this usually starts with cal-."
+    },
+    "name": {
+      "description": "Name of the calendar.",
+      "type": "string"
+    },
+    "slug": {
+      "description": "URL slug for the calendar page (e.g. 'my-community' \u2192 lu.ma/my-community).",
+      "type": "string"
+    },
+    "description": {
+      "description": "Short description of the calendar.",
+      "type": "string"
+    },
+    "avatar_url": {
+      "description": "Specify an image that has been uploaded to the Luma CDN.",
+      "type": "string",
+      "format": "uri"
+    },
+    "tint_color": {
+      "description": "Tint color for the calendar in hex format (e.g. '#E3CBEF').",
+      "type": "string"
+    }
+  },
+  "required": [
+    "calendar_id"
+  ]
+}

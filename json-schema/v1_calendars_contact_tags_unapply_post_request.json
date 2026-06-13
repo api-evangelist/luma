@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_contact_tags_unapply_post_request.json",
+  "title": "V1 Calendars Contact Tags Unapply Post Request",
+  "type": "object",
+  "properties": {
+    "tag": {
+      "type": "string",
+      "description": "Tag ID (e.g., 'tag-123') or tag name"
+    },
+    "user_ids": {
+      "description": "Array of user IDs to remove the tag from",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "emails": {
+      "description": "Array of email addresses to remove the tag from",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "tag"
+  ]
+}

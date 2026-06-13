@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_memberships_tiers_list_get_200_response.json",
+  "title": "V1 Memberships Tiers List Get 200 Response",
+  "type": "object",
+  "properties": {
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tint_color": {
+            "description": "A hex color like '#bb2dc7'. Alpha channels (#rgba, #rrggbbaa) are automatically stripped.",
+            "type": "string"
+          },
+          "access_info": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "free"
+                  },
+                  "require_approval": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "type",
+                  "require_approval"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "payment-once"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": [
+                      "solana_sol",
+                      "solana_usdc",
+                      "aed",
+                      "afn",
+                      "all",
+                      "amd",
+                      "ang",
+                      "aoa",
+                      "ars",
+                      "aud",
+                      "awg",
+                      "azn",
+                      "bam",
+                      "bbd",
+                      "bdt",
+                      "bgn",
+                      "bhd",
+                      "bif",
+                      "bmd",
+                      "bnd",
+                      "bob",
+                      "brl",
+                      "bsd",
+                      "bwp",
+                      "byn",
+                      "bzd",
+                      "cad",
+                      "cdf",
+                      "chf",
+                      "clp",
+                      "cny",
+                      "cop",
+                      "crc",
+                      "cve",
+                      "czk",
+                      "djf",
+                      "dkk",
+                      "dop",
+                      "dzd",
+                      "egp",
+                      "etb",
+                      "eur",
+                      "fjd",
+                      "fkp",
+                      "gbp",
+                      "gel",
+                      "ghs",
+                      "gip",
+                      "gmd",
+                      "gnf",
+                      "gtq",
+                      "gyd",
+                      "hkd",
+                      "hnl",
+                      "htg",
+                      "huf",
+                      "idr",
+                      "ils",
+                      "inr",
+                      "isk",
+                      "jmd",
+                      "jod",
+                      "jpy",
+                      "kes",
+                      "kgs",
+                      "khr",
+                      "kmf",
+                      "krw",
+                      "kwd",
+                      "kyd",
+                      "kzt",
+                      "lak",
+                      "lbp",
+                      "lkr",
+                      "lrd",
+                      "lsl",
+                      "mad",
+                      "mdl",
+                      "mga",
+                      "mkd",
+                      "mmk",
+                      "mnt",
+                      "mop",
+                      "mur",
+                      "mvr",
+                      "mwk",
+                      "mxn",
+                      "myr",
+                      "mzn",
+                      "nad",
+                      "ngn",
+                      "nio",
+                      "nok",
+                      "npr",
+                      "nzd",
+                      "omr",
+                      "pab",
+                      "pen",
+                      "pgk",
+                      "php",
+                      "pkr",
+                      "pln",
+                      "pyg",
+                      "qar",
+                      "ron",
+                      "rsd",
+                      "rub",
+                      "rwf",
+                      "sar",
+                      "sbd",
+                      "scr",
+                      "sek",
+                      "sgd",
+                      "shp",
+                      "sle",
+                      "sos",
+                      "srd",
+                      "std",
+                      "szl",
+                      "thb",
+                      "tjs",
+                      "tnd",
+                      "top",
+                      "try",
+                      "ttd",
+                      "twd",
+                      "tzs",
+                      "uah",
+                      "ugx",
+                      "usd",
+                      "uyu",
+                      "uzs",
+                      "vnd",
+                      "vuv",
+                      "wst",
+                      "xaf",
+                      "xcd",
+                      "xof",
+                      "xpf",
+                      "yer",
+                      "zar",
+                      "zmw"
+                    ]
+                  },
+                  "require_approval": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "type",
+                  "amount",
+                  "currency",
+                  "require_approval"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "payment-recurring"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": [
+                      "solana_sol",
+                      "solana_usdc",
+                      "aed",
+                      "afn",
+                      "all",
+                      "amd",
+                      "ang",
+                      "aoa",
+                      "ars",
+                      "aud",
+                      "awg",
+                      "azn",
+                      "bam",
+                      "bbd",
+                      "bdt",
+                      "bgn",
+                      "bhd",
+                      "bif",
+                      "bmd",
+                      "bnd",
+                      "bob",
+                      "brl",
+                      "bsd",
+                      "bwp",
+                      "byn",
+                      "bzd",
+                      "cad",
+                      "cdf",
+                      "chf",
+                      "clp",
+                      "cny",
+                      "cop",
+                      "crc",
+                      "cve",
+                      "czk",
+                      "djf",
+                      "dkk",
+                      "dop",
+                      "dzd",
+                      "egp",
+                      "etb",
+                      "eur",
+                      "fjd",
+                      "fkp",
+                      "gbp",
+                      "gel",
+                      "ghs",
+                      "gip",
+                      "gmd",
+                      "gnf",
+                      "gtq",
+                      "gyd",
+                      "hkd",
+                      "hnl",
+                      "htg",
+                      "huf",
+                      "idr",
+                      "ils",
+                      "inr",
+                      "isk",
+                      "jmd",
+                      "jod",
+                      "jpy",
+                      "kes",
+                      "kgs",
+                      "khr",
+                      "kmf",
+                      "krw",
+                      "kwd",
+                      "kyd",
+                      "kzt",
+                      "lak",
+                      "lbp",
+                      "lkr",
+                      "lrd",
+                      "lsl",
+                      "mad",
+                      "mdl",
+                      "mga",
+                      "mkd",
+                      "mmk",
+                      "mnt",
+                      "mop",
+                      "mur",
+                      "mvr",
+                      "mwk",
+                      "mxn",
+                      "myr",
+                      "mzn",
+                      "nad",
+                      "ngn",
+                      "nio",
+                      "nok",
+                      "npr",
+                      "nzd",
+                      "omr",
+                      "pab",
+                      "pen",
+                      "pgk",
+                      "php",
+                      "pkr",
+                      "pln",
+                      "pyg",
+                      "qar",
+                      "ron",
+                      "rsd",
+                      "rub",
+                      "rwf",
+                      "sar",
+                      "sbd",
+                      "scr",
+                      "sek",
+                      "sgd",
+                      "shp",
+                      "sle",
+                      "sos",
+                      "srd",
+                      "std",
+                      "szl",
+                      "thb",
+                      "tjs",
+                      "tnd",
+                      "top",
+                      "try",
+                      "ttd",
+                      "twd",
+                      "tzs",
+                      "uah",
+                      "ugx",
+                      "usd",
+                      "uyu",
+                      "uzs",
+                      "vnd",
+                      "vuv",
+                      "wst",
+                      "xaf",
+                      "xcd",
+                      "xof",
+                      "xpf",
+                      "yer",
+                      "zar",
+                      "zmw"
+                    ]
+                  },
+                  "stripe_account_id": {
+                    "type": "string"
+                  },
+                  "stripe_product_id": {
+                    "type": "string"
+                  },
+                  "stripe_monthly_price_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "amount_monthly": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "stripe_yearly_price_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "amount_yearly": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "require_approval": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "type",
+                  "currency",
+                  "stripe_account_id",
+                  "stripe_product_id",
+                  "require_approval"
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "tint_color",
+          "access_info"
+        ]
+      }
+    },
+    "has_more": {
+      "type": "boolean"
+    },
+    "next_cursor": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "entries",
+    "has_more"
+  ]
+}

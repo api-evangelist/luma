@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_guests_update_status_post_request.json",
+  "title": "V1 Events Guests Update Status Post Request",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Event ID, this usually starts with evt-"
+    },
+    "guest_id": {
+      "type": "string",
+      "description": "Guest identifier \u2014 the guest ID (gst-), a ticket key, a guest key (g-), or the user's email."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "declined",
+        "pending_approval",
+        "waitlist"
+      ]
+    },
+    "should_refund": {
+      "description": "If you are moving a guest who has paid to `declined`, `waitlist`, or `pending_approval`, should we refund their payment? Defaults to false.",
+      "type": "boolean"
+    },
+    "send_email": {
+      "description": "Optional. Whether Luma should email the guest about the status change. Defaults to true. Set to false if your integration sends its own notifications.",
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "message": {
+      "description": "Optional. Personal message included in the email we send the guest about the status change. Max of 200 characters. Can't be combined with `send_email: false`.",
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 200
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "event_id",
+    "guest_id",
+    "status"
+  ]
+}

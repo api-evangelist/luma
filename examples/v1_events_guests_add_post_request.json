@@ -1,0 +1,19 @@
+{
+  "event_id": "string",
+  "guests": [
+    {
+      "email": "string",
+      "name": "string"
+    }
+  ],
+  "ticket": {
+    "event_ticket_type_id": "string"
+  },
+  "tickets": [
+    {
+      "event_ticket_type_id": "string"
+    }
+  ],
+  "approval_status": "approved",
+  "send_email": true
+}

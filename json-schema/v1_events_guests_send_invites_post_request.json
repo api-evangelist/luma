@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_guests_send_invites_post_request.json",
+  "title": "V1 Events Guests Send Invites Post Request",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Event ID, this usually starts with evt-"
+    },
+    "guests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "description": "Information about the guests you want to invite to the event. If a user already has a name, this will not overwrite their name."
+    },
+    "message": {
+      "description": "Personalize the message that will be included in the invite. Max of 200 characters.",
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 200
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "event_id",
+    "guests"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "type": "string",
+  "data": {
+    "platform": "string",
+    "id": "string",
+    "api_id": "string",
+    "name": "string",
+    "url": "string",
+    "cover_url": "string",
+    "start_at": "2024-01-01T00:00:00Z",
+    "end_at": "2024-01-01T00:00:00Z",
+    "timezone": "string",
+    "calendar": {
+      "id": "string",
+      "name": "string",
+      "slug": null,
+      "avatar_url": null,
+      "url": "string",
+      "description": null,
+      "social_image_url": null,
+      "cover_image_url": null,
+      "is_personal": true,
+      "location": null,
+      "coordinate": null,
+      "instagram_handle": null,
+      "twitter_handle": null,
+      "youtube_handle": null,
+      "website": null
+    },
+    "hosts": [
+      {
+        "id": "string",
+        "name": null,
+        "avatar_url": "string"
+      }
+    ]
+  }
+}

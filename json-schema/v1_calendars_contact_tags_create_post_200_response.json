@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_contact_tags_create_post_200_response.json",
+  "title": "V1 Calendars Contact Tags Create Post 200 Response",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Tag ID, this usually starts with tag-"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

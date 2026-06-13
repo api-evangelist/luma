@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_contact_tags_apply_post_200_response.json",
+  "title": "V1 Calendars Contact Tags Apply Post 200 Response",
+  "type": "object",
+  "properties": {
+    "applied_count": {
+      "type": "number",
+      "description": "Number of contacts the tag was successfully applied to"
+    },
+    "skipped_count": {
+      "type": "number",
+      "description": "Number of users skipped because they are not calendar contacts"
+    }
+  },
+  "required": [
+    "applied_count",
+    "skipped_count"
+  ]
+}

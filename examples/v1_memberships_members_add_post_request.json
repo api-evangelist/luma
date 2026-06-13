@@ -1,0 +1,14 @@
+{
+  "email": "user@example.com",
+  "membership_tier_id": "string",
+  "registration_answers": [
+    {
+      "label": "string",
+      "question_id": "string",
+      "value": true,
+      "answer": true,
+      "question_type": "string"
+    }
+  ],
+  "skip_payment": true
+}

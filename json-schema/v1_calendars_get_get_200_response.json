@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_get_get_200_response.json",
+  "title": "V1 Calendars Get Get 200 Response",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "avatar_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "social_image_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cover_image_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "is_personal": {
+      "type": "boolean"
+    },
+    "location": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "City name, e.g. 'New York'."
+            },
+            "region": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "State or province, e.g. 'New York' or 'California'."
+            },
+            "country": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Country name, e.g. 'United States'. Null for cities in disputed territories where Google omits the country."
+            },
+            "country_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "ISO 3166-1 alpha-2 country code, e.g. 'US'."
+            },
+            "timezone": {
+              "type": "string",
+              "description": "IANA timezone of the city, e.g. 'America/New_York'."
+            }
+          },
+          "required": [
+            "city",
+            "region",
+            "country",
+            "country_code",
+            "timezone"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "City the calendar is based in (e.g. for city calendars). Null when the calendar isn't tied to a place."
+    },
+    "coordinate": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "longitude": {
+              "type": "number"
+            },
+            "latitude": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "longitude",
+            "latitude"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Latitude and longitude of the calendar's primary location (e.g. city calendars). Null when the calendar isn't tied to a place."
+    },
+    "instagram_handle": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "twitter_handle": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "youtube_handle": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "website": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "slug",
+    "avatar_url",
+    "url",
+    "description",
+    "social_image_url",
+    "cover_image_url",
+    "is_personal",
+    "location",
+    "coordinate",
+    "instagram_handle",
+    "twitter_handle",
+    "youtube_handle",
+    "website"
+  ]
+}

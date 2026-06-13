@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_images_create_upload_url_post_request.json",
+  "title": "V1 Images Create Upload Url Post Request",
+  "type": "object",
+  "properties": {
+    "content_type": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "image/jpeg",
+            "image/png"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

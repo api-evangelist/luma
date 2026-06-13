@@ -31,7 +31,7 @@ apis:
       - type: Documentation
         url: https://docs.luma.com/reference
       - type: OpenAPI
-        url: https://docs.luma.com/llms.txt
+        url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/openapi/openapi.json
       - type: Authentication
         url: https://help.luma.com/p/luma-api
       - type: Plans

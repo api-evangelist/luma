@@ -1,0 +1,29 @@
+{
+  "type": "string",
+  "data": {
+    "id": "string",
+    "created_at": "2024-01-01T00:00:00Z",
+    "event_approved_count": 0,
+    "event_checked_in_count": 0,
+    "revenue_usd_cents": 0,
+    "tags": [
+      {
+        "id": "string",
+        "name": "string"
+      }
+    ],
+    "membership": {
+      "status": "approved",
+      "calendar_membership_tier_id": "string"
+    },
+    "email": "string",
+    "user": {
+      "id": "string",
+      "name": "string",
+      "avatar_url": "string",
+      "email": "string",
+      "first_name": "string",
+      "last_name": "string"
+    }
+  }
+}

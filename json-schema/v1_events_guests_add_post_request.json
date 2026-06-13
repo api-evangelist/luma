@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_guests_add_post_request.json",
+  "title": "V1 Events Guests Add Post Request",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Event ID, this usually starts with evt-"
+    },
+    "guests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "description": "Information about the guests you want to add to the event. If a user already has a name, this will not overwrite their name."
+      }
+    },
+    "ticket": {
+      "description": "Optional. Assign a single ticket of the specified type to each guest. Cannot be used with `tickets` parameter.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "event_ticket_type_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "event_ticket_type_id"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "tickets": {
+      "description": "Optional. Assign multiple tickets to each guest. Each guest receives all tickets in the array. Use this to add multiple tickets of the same or different types. Cannot be used with `ticket` parameter.",
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "event_ticket_type_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "event_ticket_type_id"
+            ]
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "approval_status": {
+      "description": "Optional. Status to assign to each added guest. Defaults to `approved` (\"Going\"). Use `pending_approval` to add guests for host review, or `waitlist` to add to the event waitlist. To send a soft invite that guests can accept, use `/v1/events/guests/send-invites` instead.",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "approved",
+            "pending_approval",
+            "waitlist"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "send_email": {
+      "description": "Optional. Whether Luma should email each added guest. Defaults to true. Set to false if your integration sends its own notifications.",
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "event_id",
+    "guests"
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "luma": "https://docs.luma.com/reference/",
+    "api": "https://raw.githubusercontent.com/api-evangelist/luma/main/vocabulary/vocabulary.json#",
+    "access_level": {
+      "@id": "api:access_level"
+    },
+    "api_id": {
+      "@id": "api:api_id"
+    },
+    "applied_count": {
+      "@id": "api:applied_count"
+    },
+    "approval_status": {
+      "@id": "api:approval_status"
+    },
+    "avatar_url": {
+      "@id": "api:avatar_url"
+    },
+    "calendar_event_id": {
+      "@id": "api:calendar_event_id"
+    },
+    "calendar_id": {
+      "@id": "api:calendar_id"
+    },
+    "can_register_for_multiple_tickets": {
+      "@id": "api:can_register_for_multiple_tickets"
+    },
+    "cancellation_token": {
+      "@id": "api:cancellation_token"
+    },
+    "cents": {
+      "@id": "api:cents"
+    },
+    "cents_off": {
+      "@id": "api:cents_off"
+    },
+    "check_in_qr_code": {
+      "@id": "api:check_in_qr_code"
+    },
+    "code": {
+      "@id": "api:code"
+    },
+    "color": {
+      "@id": "api:color"
+    },
+    "contacts": {
+      "@id": "api:contacts"
+    },
+    "content_type": {
+      "@id": "api:content_type"
+    },
+    "coordinate": {
+      "@id": "api:coordinate"
+    },
+    "cover_image_url": {
+      "@id": "api:cover_image_url"
+    },
+    "cover_url": {
+      "@id": "api:cover_url"
+    },
+    "created_at": {
+      "@id": "api:created_at"
+    },
+    "currency": {
+      "@id": "api:currency"
+    },
+    "description": {
+      "@id": "api:description"
+    },
+    "description_md": {
+      "@id": "api:description_md"
+    },
+    "discount": {
+      "@id": "api:discount"
+    },
+    "duration_interval": {
+      "@id": "api:duration_interval"
+    },
+    "email": {
+      "@id": "api:email"
+    },
+    "emails": {
+      "@id": "api:emails"
+    },
+    "end_at": {
+      "@id": "api:end_at"
+    },
+    "entity": {
+      "@id": "api:entity"
+    },
+    "entries": {
+      "@id": "api:entries"
+    },
+    "eth_address": {
+      "@id": "api:eth_address"
+    },
+    "event": {
+      "@id": "api:event"
+    },
+    "event_api_id": {
+      "@id": "api:event_api_id"
+    },
+    "event_id": {
+      "@id": "api:event_id"
+    },
+    "event_ids": {
+      "@id": "api:event_ids"
+    },
+    "event_ticket_orders": {
+      "@id": "api:event_ticket_orders"
+    },
+    "event_ticket_type_id": {
+      "@id": "api:event_ticket_type_id"
+    },
+    "event_tickets": {
+      "@id": "api:event_tickets"
+    },
+    "event_types": {
+      "@id": "api:event_types"
+    },
+    "feedback_email": {
+      "@id": "api:feedback_email"
+    },
+    "file_url": {
+      "@id": "api:file_url"
+    },
+    "first_name": {
+      "@id": "api:first_name"
+    },
+    "geo_address_json": {
+      "@id": "api:geo_address_json"
+    },
+    "geo_latitude": {
+      "@id": "api:geo_latitude"
+    },
+    "geo_longitude": {
+      "@id": "api:geo_longitude"
+    },
+    "guest_count": {
+      "@id": "api:guest_count"
+    },
+    "guest_id": {
+      "@id": "api:guest_id"
+    },
+    "guests": {
+      "@id": "api:guests"
+    },
+    "has_more": {
+      "@id": "api:has_more"
+    },
+    "host": {
+      "@id": "api:host"
+    },
+    "hosts": {
+      "@id": "api:hosts"
+    },
+    "id": {
+      "@id": "api:id"
+    },
+    "instagram_handle": {
+      "@id": "api:instagram_handle"
+    },
+    "invited_at": {
+      "@id": "api:invited_at"
+    },
+    "is_flexible": {
+      "@id": "api:is_flexible"
+    },
+    "is_hidden": {
+      "@id": "api:is_hidden"
+    },
+    "is_paid": {
+      "@id": "api:is_paid"
+    },
+    "is_personal": {
+      "@id": "api:is_personal"
+    },
+    "is_visible": {
+      "@id": "api:is_visible"
+    },
+    "joined_at": {
+      "@id": "api:joined_at"
+    },
+    "last_name": {
+      "@id": "api:last_name"
+    },
+    "location": {
+      "@id": "api:location"
+    },
+    "location_type": {
+      "@id": "api:location_type"
+    },
+    "location_visibility": {
+      "@id": "api:location_visibility"
+    },
+    "max_capacity": {
+      "@id": "api:max_capacity"
+    },
+    "meeting_url": {
+      "@id": "api:meeting_url"
+    },
+    "membership_id": {
+      "@id": "api:membership_id"
+    },
+    "membership_tier_id": {
+      "@id": "api:membership_tier_id"
+    },
+    "message": {
+      "@id": "api:message"
+    },
+    "min_cents": {
+      "@id": "api:min_cents"
+    },
+    "name": {
+      "@id": "api:name"
+    },
+    "name_requirement": {
+      "@id": "api:name_requirement"
+    },
+    "next_cursor": {
+      "@id": "api:next_cursor"
+    },
+    "percent_off": {
+      "@id": "api:percent_off"
+    },
+    "phone_number": {
+      "@id": "api:phone_number"
+    },
+    "phone_number_requirement": {
+      "@id": "api:phone_number_requirement"
+    },
+    "platform": {
+      "@id": "api:platform"
+    },
+    "registered_at": {
+      "@id": "api:registered_at"
+    },
+    "registration_answers": {
+      "@id": "api:registration_answers"
+    },
+    "registration_questions": {
+      "@id": "api:registration_questions"
+    },
+    "remaining_count": {
+      "@id": "api:remaining_count"
+    },
+    "reminders_disabled": {
+      "@id": "api:reminders_disabled"
+    },
+    "removed_count": {
+      "@id": "api:removed_count"
+    },
+    "require_approval": {
+      "@id": "api:require_approval"
+    },
+    "secret": {
+      "@id": "api:secret"
+    },
+    "send_email": {
+      "@id": "api:send_email"
+    },
+    "should_refund": {
+      "@id": "api:should_refund"
+    },
+    "show_guest_list": {
+      "@id": "api:show_guest_list"
+    },
+    "skip_payment": {
+      "@id": "api:skip_payment"
+    },
+    "skipped_count": {
+      "@id": "api:skipped_count"
+    },
+    "slug": {
+      "@id": "api:slug"
+    },
+    "social_image_url": {
+      "@id": "api:social_image_url"
+    },
+    "solana_address": {
+      "@id": "api:solana_address"
+    },
+    "start_at": {
+      "@id": "api:start_at"
+    },
+    "status": {
+      "@id": "api:status"
+    },
+    "submission_mode": {
+      "@id": "api:submission_mode"
+    },
+    "suppress_notifications": {
+      "@id": "api:suppress_notifications"
+    },
+    "tag": {
+      "@id": "api:tag"
+    },
+    "tag_id": {
+      "@id": "api:tag_id"
+    },
+    "tags": {
+      "@id": "api:tags"
+    },
+    "ticket": {
+      "@id": "api:ticket"
+    },
+    "tickets": {
+      "@id": "api:tickets"
+    },
+    "timezone": {
+      "@id": "api:timezone"
+    },
+    "tint_color": {
+      "@id": "api:tint_color"
+    },
+    "twitter_handle": {
+      "@id": "api:twitter_handle"
+    },
+    "type": {
+      "@id": "api:type"
+    },
+    "upload_url": {
+      "@id": "api:upload_url"
+    },
+    "url": {
+      "@id": "api:url"
+    },
+    "user_email": {
+      "@id": "api:user_email"
+    },
+    "user_first_name": {
+      "@id": "api:user_first_name"
+    },
+    "user_id": {
+      "@id": "api:user_id"
+    },
+    "user_ids": {
+      "@id": "api:user_ids"
+    },
+    "user_last_name": {
+      "@id": "api:user_last_name"
+    },
+    "user_name": {
+      "@id": "api:user_name"
+    },
+    "utm_source": {
+      "@id": "api:utm_source"
+    },
+    "valid_end_at": {
+      "@id": "api:valid_end_at"
+    },
+    "valid_start_at": {
+      "@id": "api:valid_start_at"
+    },
+    "visibility": {
+      "@id": "api:visibility"
+    },
+    "waitlist_status": {
+      "@id": "api:waitlist_status"
+    },
+    "website": {
+      "@id": "api:website"
+    },
+    "youtube_handle": {
+      "@id": "api:youtube_handle"
+    }
+  }
+}

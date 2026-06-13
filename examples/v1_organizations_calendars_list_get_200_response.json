@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "id": "string",
+      "name": "string",
+      "slug": "string",
+      "avatar_url": "string",
+      "url": "string",
+      "description": "string",
+      "social_image_url": "string",
+      "cover_image_url": "string",
+      "is_personal": true,
+      "location": {
+        "city": "string",
+        "region": null,
+        "country": null,
+        "country_code": null,
+        "timezone": "string"
+      },
+      "coordinate": {
+        "longitude": 0,
+        "latitude": 0
+      },
+      "instagram_handle": "string",
+      "twitter_handle": "string",
+      "youtube_handle": "string",
+      "website": "string"
+    }
+  ],
+  "has_more": true,
+  "next_cursor": "string"
+}

@@ -1,0 +1,1175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_guests_get_get_200_response.json",
+  "title": "V1 Events Guests Get Get 200 Response",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "user_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "user_first_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "user_last_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "approval_status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "session",
+        "pending_approval",
+        "invited",
+        "declined",
+        "waitlist"
+      ]
+    },
+    "check_in_qr_code": {
+      "type": "string"
+    },
+    "eth_address": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{40}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "invited_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "When the guest was invited to the event. Null if they registered on their own."
+    },
+    "joined_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "When the guest first clicked the virtual join link (luma.com/join/...). Only set for online events. Null if the guest has not joined."
+    },
+    "phone_number": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "registered_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "When the guest registered for the event."
+    },
+    "registration_answers": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "question_id": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  },
+                  "answer": {
+                    "type": "boolean"
+                  },
+                  "question_type": {
+                    "type": "string",
+                    "const": "agree-check"
+                  }
+                },
+                "required": [
+                  "label",
+                  "question_id",
+                  "question_type"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "question_id": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "object",
+                    "properties": {
+                      "company": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "job_title": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "answer": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "answer_company": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "answer_job_title": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "question_type": {
+                    "type": "string",
+                    "const": "company"
+                  }
+                },
+                "required": [
+                  "label",
+                  "question_id",
+                  "value",
+                  "question_type"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "question_id": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "answer": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "question_type": {
+                    "type": "string",
+                    "const": "dropdown"
+                  }
+                },
+                "required": [
+                  "label",
+                  "question_id",
+                  "value",
+                  "question_type"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "question_id": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "answer": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "question_type": {
+                    "type": "string",
+                    "const": "multi-select"
+                  }
+                },
+                "required": [
+                  "label",
+                  "question_id",
+                  "value",
+                  "question_type"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "question_id": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "answer": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "question_type": {
+                    "type": "string",
+                    "const": "phone-number"
+                  }
+                },
+                "required": [
+                  "label",
+                  "question_id",
+                  "value",
+                  "question_type"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "question_id": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean",
+                            "const": true
+                          }
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "answer": {
+                    "anyOf": [
+                      {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean",
+                            "const": true
+                          }
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "question_type": {
+                    "type": "string",
+                    "const": "terms"
+                  }
+                },
+                "required": [
+                  "label",
+                  "question_id",
+                  "question_type"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "question_id": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "answer": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "question_type": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "const": "github"
+                      },
+                      {
+                        "type": "string",
+                        "const": "instagram"
+                      },
+                      {
+                        "type": "string",
+                        "const": "linkedin"
+                      },
+                      {
+                        "type": "string",
+                        "const": "long-text"
+                      },
+                      {
+                        "type": "string",
+                        "const": "telegram"
+                      },
+                      {
+                        "type": "string",
+                        "const": "text"
+                      },
+                      {
+                        "type": "string",
+                        "const": "twitter"
+                      },
+                      {
+                        "type": "string",
+                        "const": "youtube"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "label",
+                  "question_id",
+                  "value",
+                  "question_type"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "question_id": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "answer": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "question_type": {
+                    "type": "string",
+                    "const": "url"
+                  }
+                },
+                "required": [
+                  "label",
+                  "question_id",
+                  "value",
+                  "question_type"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "solana_address": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[5KL1-9A-HJ-NP-Za-km-z]{32,44}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "utm_source": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "The UTM source parameter captured when the guest registered (from the `?utm_source=` query parameter)."
+    },
+    "event_tickets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "amount_discount": {
+            "type": "number"
+          },
+          "amount_tax": {
+            "type": "number"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "solana_sol",
+                  "solana_usdc",
+                  "aed",
+                  "afn",
+                  "all",
+                  "amd",
+                  "ang",
+                  "aoa",
+                  "ars",
+                  "aud",
+                  "awg",
+                  "azn",
+                  "bam",
+                  "bbd",
+                  "bdt",
+                  "bgn",
+                  "bhd",
+                  "bif",
+                  "bmd",
+                  "bnd",
+                  "bob",
+                  "brl",
+                  "bsd",
+                  "bwp",
+                  "byn",
+                  "bzd",
+                  "cad",
+                  "cdf",
+                  "chf",
+                  "clp",
+                  "cny",
+                  "cop",
+                  "crc",
+                  "cve",
+                  "czk",
+                  "djf",
+                  "dkk",
+                  "dop",
+                  "dzd",
+                  "egp",
+                  "etb",
+                  "eur",
+                  "fjd",
+                  "fkp",
+                  "gbp",
+                  "gel",
+                  "ghs",
+                  "gip",
+                  "gmd",
+                  "gnf",
+                  "gtq",
+                  "gyd",
+                  "hkd",
+                  "hnl",
+                  "htg",
+                  "huf",
+                  "idr",
+                  "ils",
+                  "inr",
+                  "isk",
+                  "jmd",
+                  "jod",
+                  "jpy",
+                  "kes",
+                  "kgs",
+                  "khr",
+                  "kmf",
+                  "krw",
+                  "kwd",
+                  "kyd",
+                  "kzt",
+                  "lak",
+                  "lbp",
+                  "lkr",
+                  "lrd",
+                  "lsl",
+                  "mad",
+                  "mdl",
+                  "mga",
+                  "mkd",
+                  "mmk",
+                  "mnt",
+                  "mop",
+                  "mur",
+                  "mvr",
+                  "mwk",
+                  "mxn",
+                  "myr",
+                  "mzn",
+                  "nad",
+                  "ngn",
+                  "nio",
+                  "nok",
+                  "npr",
+                  "nzd",
+                  "omr",
+                  "pab",
+                  "pen",
+                  "pgk",
+                  "php",
+                  "pkr",
+                  "pln",
+                  "pyg",
+                  "qar",
+                  "ron",
+                  "rsd",
+                  "rub",
+                  "rwf",
+                  "sar",
+                  "sbd",
+                  "scr",
+                  "sek",
+                  "sgd",
+                  "shp",
+                  "sle",
+                  "sos",
+                  "srd",
+                  "std",
+                  "szl",
+                  "thb",
+                  "tjs",
+                  "tnd",
+                  "top",
+                  "try",
+                  "ttd",
+                  "twd",
+                  "tzs",
+                  "uah",
+                  "ugx",
+                  "usd",
+                  "uyu",
+                  "uzs",
+                  "vnd",
+                  "vuv",
+                  "wst",
+                  "xaf",
+                  "xcd",
+                  "xof",
+                  "xpf",
+                  "yer",
+                  "zar",
+                  "zmw"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "checked_in_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+                "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "event_ticket_type_id": {
+            "type": "string"
+          },
+          "is_captured": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "amount",
+          "amount_discount",
+          "amount_tax",
+          "currency",
+          "checked_in_at",
+          "event_ticket_type_id",
+          "is_captured",
+          "name"
+        ]
+      }
+    },
+    "event_ticket_orders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "amount_discount": {
+            "type": "number"
+          },
+          "amount_tax": {
+            "type": "number"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "solana_sol",
+                  "solana_usdc",
+                  "aed",
+                  "afn",
+                  "all",
+                  "amd",
+                  "ang",
+                  "aoa",
+                  "ars",
+                  "aud",
+                  "awg",
+                  "azn",
+                  "bam",
+                  "bbd",
+                  "bdt",
+                  "bgn",
+                  "bhd",
+                  "bif",
+                  "bmd",
+                  "bnd",
+                  "bob",
+                  "brl",
+                  "bsd",
+                  "bwp",
+                  "byn",
+                  "bzd",
+                  "cad",
+                  "cdf",
+                  "chf",
+                  "clp",
+                  "cny",
+                  "cop",
+                  "crc",
+                  "cve",
+                  "czk",
+                  "djf",
+                  "dkk",
+                  "dop",
+                  "dzd",
+                  "egp",
+                  "etb",
+                  "eur",
+                  "fjd",
+                  "fkp",
+                  "gbp",
+                  "gel",
+                  "ghs",
+                  "gip",
+                  "gmd",
+                  "gnf",
+                  "gtq",
+                  "gyd",
+                  "hkd",
+                  "hnl",
+                  "htg",
+                  "huf",
+                  "idr",
+                  "ils",
+                  "inr",
+                  "isk",
+                  "jmd",
+                  "jod",
+                  "jpy",
+                  "kes",
+                  "kgs",
+                  "khr",
+                  "kmf",
+                  "krw",
+                  "kwd",
+                  "kyd",
+                  "kzt",
+                  "lak",
+                  "lbp",
+                  "lkr",
+                  "lrd",
+                  "lsl",
+                  "mad",
+                  "mdl",
+                  "mga",
+                  "mkd",
+                  "mmk",
+                  "mnt",
+                  "mop",
+                  "mur",
+                  "mvr",
+                  "mwk",
+                  "mxn",
+                  "myr",
+                  "mzn",
+                  "nad",
+                  "ngn",
+                  "nio",
+                  "nok",
+                  "npr",
+                  "nzd",
+                  "omr",
+                  "pab",
+                  "pen",
+                  "pgk",
+                  "php",
+                  "pkr",
+                  "pln",
+                  "pyg",
+                  "qar",
+                  "ron",
+                  "rsd",
+                  "rub",
+                  "rwf",
+                  "sar",
+                  "sbd",
+                  "scr",
+                  "sek",
+                  "sgd",
+                  "shp",
+                  "sle",
+                  "sos",
+                  "srd",
+                  "std",
+                  "szl",
+                  "thb",
+                  "tjs",
+                  "tnd",
+                  "top",
+                  "try",
+                  "ttd",
+                  "twd",
+                  "tzs",
+                  "uah",
+                  "ugx",
+                  "usd",
+                  "uyu",
+                  "uzs",
+                  "vnd",
+                  "vuv",
+                  "wst",
+                  "xaf",
+                  "xcd",
+                  "xof",
+                  "xpf",
+                  "yer",
+                  "zar",
+                  "zmw"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "coupon_info": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "api_id": {
+                    "type": "string"
+                  },
+                  "percent_off": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "cents_off": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "currency": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "solana_sol",
+                          "solana_usdc",
+                          "aed",
+                          "afn",
+                          "all",
+                          "amd",
+                          "ang",
+                          "aoa",
+                          "ars",
+                          "aud",
+                          "awg",
+                          "azn",
+                          "bam",
+                          "bbd",
+                          "bdt",
+                          "bgn",
+                          "bhd",
+                          "bif",
+                          "bmd",
+                          "bnd",
+                          "bob",
+                          "brl",
+                          "bsd",
+                          "bwp",
+                          "byn",
+                          "bzd",
+                          "cad",
+                          "cdf",
+                          "chf",
+                          "clp",
+                          "cny",
+                          "cop",
+                          "crc",
+                          "cve",
+                          "czk",
+                          "djf",
+                          "dkk",
+                          "dop",
+                          "dzd",
+                          "egp",
+                          "etb",
+                          "eur",
+                          "fjd",
+                          "fkp",
+                          "gbp",
+                          "gel",
+                          "ghs",
+                          "gip",
+                          "gmd",
+                          "gnf",
+                          "gtq",
+                          "gyd",
+                          "hkd",
+                          "hnl",
+                          "htg",
+                          "huf",
+                          "idr",
+                          "ils",
+                          "inr",
+                          "isk",
+                          "jmd",
+                          "jod",
+                          "jpy",
+                          "kes",
+                          "kgs",
+                          "khr",
+                          "kmf",
+                          "krw",
+                          "kwd",
+                          "kyd",
+                          "kzt",
+                          "lak",
+                          "lbp",
+                          "lkr",
+                          "lrd",
+                          "lsl",
+                          "mad",
+                          "mdl",
+                          "mga",
+                          "mkd",
+                          "mmk",
+                          "mnt",
+                          "mop",
+                          "mur",
+                          "mvr",
+                          "mwk",
+                          "mxn",
+                          "myr",
+                          "mzn",
+                          "nad",
+                          "ngn",
+                          "nio",
+                          "nok",
+                          "npr",
+                          "nzd",
+                          "omr",
+                          "pab",
+                          "pen",
+                          "pgk",
+                          "php",
+                          "pkr",
+                          "pln",
+                          "pyg",
+                          "qar",
+                          "ron",
+                          "rsd",
+                          "rub",
+                          "rwf",
+                          "sar",
+                          "sbd",
+                          "scr",
+                          "sek",
+                          "sgd",
+                          "shp",
+                          "sle",
+                          "sos",
+                          "srd",
+                          "std",
+                          "szl",
+                          "thb",
+                          "tjs",
+                          "tnd",
+                          "top",
+                          "try",
+                          "ttd",
+                          "twd",
+                          "tzs",
+                          "uah",
+                          "ugx",
+                          "usd",
+                          "uyu",
+                          "uzs",
+                          "vnd",
+                          "vuv",
+                          "wst",
+                          "xaf",
+                          "xcd",
+                          "xof",
+                          "xpf",
+                          "yer",
+                          "zar",
+                          "zmw"
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "code": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "api_id",
+                  "percent_off",
+                  "cents_off",
+                  "currency",
+                  "code"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The coupon that was applied to this ticket order, if any."
+          },
+          "is_captured": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "amount",
+          "amount_discount",
+          "amount_tax",
+          "currency",
+          "coupon_info",
+          "is_captured"
+        ]
+      },
+      "description": "Detailed ticket orders for this guest. Use this to inspect applied coupon_info per order."
+    }
+  },
+  "required": [
+    "id",
+    "user_id",
+    "user_email",
+    "user_name",
+    "user_first_name",
+    "user_last_name",
+    "approval_status",
+    "check_in_qr_code",
+    "eth_address",
+    "invited_at",
+    "joined_at",
+    "phone_number",
+    "registered_at",
+    "registration_answers",
+    "solana_address",
+    "utm_source",
+    "event_tickets",
+    "event_ticket_orders"
+  ]
+}

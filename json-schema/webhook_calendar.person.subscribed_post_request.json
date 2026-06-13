@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/webhook_calendar.person.subscribed_post_request.json",
+  "title": "Webhook Calendar.Person.Subscribed Post Request",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "calendar.person.subscribed"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+        },
+        "event_approved_count": {
+          "type": "number"
+        },
+        "event_checked_in_count": {
+          "type": "number"
+        },
+        "revenue_usd_cents": {
+          "type": "number"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ]
+          }
+        },
+        "membership": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "approved",
+                    "pending",
+                    "approved-pending-payment",
+                    "declined"
+                  ]
+                },
+                "calendar_membership_tier_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "status",
+                "calendar_membership_tier_id"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "email": {
+          "type": "string"
+        },
+        "user": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "avatar_url": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "first_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "last_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "avatar_url",
+            "email",
+            "first_name",
+            "last_name"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "created_at",
+        "event_approved_count",
+        "event_checked_in_count",
+        "revenue_usd_cents",
+        "tags",
+        "membership",
+        "email",
+        "user"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "data"
+  ]
+}

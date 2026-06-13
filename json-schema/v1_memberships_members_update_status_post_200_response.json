@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_memberships_members_update_status_post_200_response.json",
+  "title": "V1 Memberships Members Update Status Post 200 Response",
+  "type": "object",
+  "description": "Empty response",
+  "properties": {},
+  "additionalProperties": false,
+  "x-stainless-empty-object": true
+}

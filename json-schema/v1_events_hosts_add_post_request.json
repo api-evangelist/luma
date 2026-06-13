@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_hosts_add_post_request.json",
+  "title": "V1 Events Hosts Add Post Request",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Event ID, this usually starts with evt-"
+    },
+    "email": {
+      "type": "string"
+    },
+    "access_level": {
+      "description": "Defaults to manager.",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "none",
+            "check-in",
+            "manager"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "is_visible": {
+      "description": "Defaults to true.",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "Name of the host you are adding. If they already have a Luma profile, this will be ignored.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "email"
+  ]
+}

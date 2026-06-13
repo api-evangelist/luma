@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_coupons_create_post_request.json",
+  "title": "V1 Events Coupons Create Post Request",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20,
+      "description": "This is the code that the user will enter on the event page. It is not case sensitive. Maximum 20 characters."
+    },
+    "remaining_count": {
+      "description": "Number of times the coupon can be used. Set to 1000000 for unlimited uses.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "valid_start_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "valid_end_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "discount": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "discount_type": {
+              "type": "string",
+              "const": "percent"
+            },
+            "percent_off": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "discount_type",
+            "percent_off"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "discount_type": {
+              "type": "string",
+              "const": "amount"
+            },
+            "cents_off": {
+              "type": "number",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "solana_sol",
+                "solana_usdc",
+                "aed",
+                "afn",
+                "all",
+                "amd",
+                "ang",
+                "aoa",
+                "ars",
+                "aud",
+                "awg",
+                "azn",
+                "bam",
+                "bbd",
+                "bdt",
+                "bgn",
+                "bhd",
+                "bif",
+                "bmd",
+                "bnd",
+                "bob",
+                "brl",
+                "bsd",
+                "bwp",
+                "byn",
+                "bzd",
+                "cad",
+                "cdf",
+                "chf",
+                "clp",
+                "cny",
+                "cop",
+                "crc",
+                "cve",
+                "czk",
+                "djf",
+                "dkk",
+                "dop",
+                "dzd",
+                "egp",
+                "etb",
+                "eur",
+                "fjd",
+                "fkp",
+                "gbp",
+                "gel",
+                "ghs",
+                "gip",
+                "gmd",
+                "gnf",
+                "gtq",
+                "gyd",
+                "hkd",
+                "hnl",
+                "htg",
+                "huf",
+                "idr",
+                "ils",
+                "inr",
+                "isk",
+                "jmd",
+                "jod",
+                "jpy",
+                "kes",
+                "kgs",
+                "khr",
+                "kmf",
+                "krw",
+                "kwd",
+                "kyd",
+                "kzt",
+                "lak",
+                "lbp",
+                "lkr",
+                "lrd",
+                "lsl",
+                "mad",
+                "mdl",
+                "mga",
+                "mkd",
+                "mmk",
+                "mnt",
+                "mop",
+                "mur",
+                "mvr",
+                "mwk",
+                "mxn",
+                "myr",
+                "mzn",
+                "nad",
+                "ngn",
+                "nio",
+                "nok",
+                "npr",
+                "nzd",
+                "omr",
+                "pab",
+                "pen",
+                "pgk",
+                "php",
+                "pkr",
+                "pln",
+                "pyg",
+                "qar",
+                "ron",
+                "rsd",
+                "rub",
+                "rwf",
+                "sar",
+                "sbd",
+                "scr",
+                "sek",
+                "sgd",
+                "shp",
+                "sle",
+                "sos",
+                "srd",
+                "std",
+                "szl",
+                "thb",
+                "tjs",
+                "tnd",
+                "top",
+                "try",
+                "ttd",
+                "twd",
+                "tzs",
+                "uah",
+                "ugx",
+                "usd",
+                "uyu",
+                "uzs",
+                "vnd",
+                "vuv",
+                "wst",
+                "xaf",
+                "xcd",
+                "xof",
+                "xpf",
+                "yer",
+                "zar",
+                "zmw"
+              ]
+            }
+          },
+          "required": [
+            "discount_type",
+            "cents_off",
+            "currency"
+          ]
+        }
+      ]
+    },
+    "event_id": {
+      "type": "string",
+      "description": "Event ID, this usually starts with evt-"
+    },
+    "event_ticket_type_id": {
+      "description": "Optional. Restrict the coupon to a single ticket type. If that ticket type is hidden, the coupon acts as an unlock (access) code that reveals the ticket during registration. Pair a hidden ticket type that has Require Approval turned off with an unlock code to let invited guests register and pay directly, skipping the Apply to Attend step. For a code that unlocks the ticket without changing the price, set the discount to 0% (`percent_off: 0`).",
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "discount",
+    "event_id"
+  ]
+}

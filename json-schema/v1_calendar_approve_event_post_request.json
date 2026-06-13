@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendar_approve_event_post_request.json",
+  "title": "V1 Calendar Approve Event Post Request",
+  "type": "object",
+  "properties": {
+    "calendar_event_id": {
+      "type": "string",
+      "description": "Calendar event ID (starts with `calev-`). You can also pass the Luma event ID (starts with `evt-`) \u2014 we'll resolve it to the active submission on your calendar."
+    }
+  },
+  "required": [
+    "calendar_event_id"
+  ]
+}

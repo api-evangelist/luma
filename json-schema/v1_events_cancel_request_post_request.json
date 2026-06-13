@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_cancel_request_post_request.json",
+  "title": "V1 Events Cancel Request Post Request",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Event ID, this usually starts with evt-"
+    }
+  },
+  "required": [
+    "event_id"
+  ]
+}

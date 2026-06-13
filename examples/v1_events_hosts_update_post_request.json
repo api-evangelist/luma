@@ -1,0 +1,6 @@
+{
+  "event_id": "string",
+  "email": "string",
+  "access_level": "none",
+  "is_visible": true
+}

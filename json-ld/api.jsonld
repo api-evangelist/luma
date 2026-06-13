@@ -1,0 +1,336 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "luma": "https://docs.luma.com/reference/"
+  },
+  "@type": "WebAPI",
+  "@id": "https://public-api.luma.com",
+  "name": "Luma API",
+  "description": "API for interacting with Luma's event platform.",
+  "version": "1.0.0",
+  "url": "https://public-api.luma.com",
+  "documentation": "https://docs.luma.com/reference",
+  "termsOfService": "https://luma.com/terms",
+  "provider": {
+    "@type": "Organization",
+    "name": "Luma",
+    "url": "https://lu.ma",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "support@lu.ma",
+      "url": "https://help.luma.com/"
+    }
+  },
+  "availableChannel": [
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/get",
+      "serviceUrl": "https://public-api.luma.com/v1/events/get"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/get",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/get"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/events/list",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/events/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/guests/get",
+      "serviceUrl": "https://public-api.luma.com/v1/events/guests/get"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/guests/list",
+      "serviceUrl": "https://public-api.luma.com/v1/events/guests/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/users/get-self",
+      "serviceUrl": "https://public-api.luma.com/v1/users/get-self"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/contact-tags/list",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/contact-tags/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/event-tags/list",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/event-tags/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendar/admins/list",
+      "serviceUrl": "https://public-api.luma.com/v1/calendar/admins/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/entity/lookup",
+      "serviceUrl": "https://public-api.luma.com/v1/entity/lookup"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendar/lookup-event",
+      "serviceUrl": "https://public-api.luma.com/v1/calendar/lookup-event"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/contacts/list",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/contacts/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/coupons/list",
+      "serviceUrl": "https://public-api.luma.com/v1/events/coupons/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/coupons/list",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/coupons/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/ticket-types/list",
+      "serviceUrl": "https://public-api.luma.com/v1/events/ticket-types/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/ticket-types/get",
+      "serviceUrl": "https://public-api.luma.com/v1/events/ticket-types/get"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/memberships/tiers/list",
+      "serviceUrl": "https://public-api.luma.com/v1/memberships/tiers/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/webhooks/list",
+      "serviceUrl": "https://public-api.luma.com/v1/webhooks/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v2/webhooks/get",
+      "serviceUrl": "https://public-api.luma.com/v2/webhooks/get"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/organizations/admins/list",
+      "serviceUrl": "https://public-api.luma.com/v1/organizations/admins/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/organizations/calendars/list",
+      "serviceUrl": "https://public-api.luma.com/v1/organizations/calendars/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/organizations/events/list",
+      "serviceUrl": "https://public-api.luma.com/v1/organizations/events/list"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/create",
+      "serviceUrl": "https://public-api.luma.com/v1/events/create"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/update",
+      "serviceUrl": "https://public-api.luma.com/v1/events/update"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/guests/update-status",
+      "serviceUrl": "https://public-api.luma.com/v1/events/guests/update-status"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/guests/send-invites",
+      "serviceUrl": "https://public-api.luma.com/v1/events/guests/send-invites"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/guests/add",
+      "serviceUrl": "https://public-api.luma.com/v1/events/guests/add"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/hosts/add",
+      "serviceUrl": "https://public-api.luma.com/v1/events/hosts/add"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/hosts/update",
+      "serviceUrl": "https://public-api.luma.com/v1/events/hosts/update"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/hosts/remove",
+      "serviceUrl": "https://public-api.luma.com/v1/events/hosts/remove"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/coupons/create",
+      "serviceUrl": "https://public-api.luma.com/v1/events/coupons/create"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/coupons/update",
+      "serviceUrl": "https://public-api.luma.com/v1/events/coupons/update"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/coupons/create",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/coupons/create"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/coupons/update",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/coupons/update"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/contacts/import",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/contacts/import"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/contact-tags/create",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/contact-tags/create"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/contact-tags/update",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/contact-tags/update"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/contact-tags/delete",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/contact-tags/delete"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/contact-tags/apply",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/contact-tags/apply"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/contact-tags/unapply",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/contact-tags/unapply"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/event-tags/create",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/event-tags/create"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/event-tags/update",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/event-tags/update"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/event-tags/delete",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/event-tags/delete"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/event-tags/apply",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/event-tags/apply"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/event-tags/unapply",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/event-tags/unapply"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendar/add-event",
+      "serviceUrl": "https://public-api.luma.com/v1/calendar/add-event"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendar/approve-event",
+      "serviceUrl": "https://public-api.luma.com/v1/calendar/approve-event"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendar/reject-event",
+      "serviceUrl": "https://public-api.luma.com/v1/calendar/reject-event"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/images/create-upload-url",
+      "serviceUrl": "https://public-api.luma.com/v1/images/create-upload-url"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/ticket-types/create",
+      "serviceUrl": "https://public-api.luma.com/v1/events/ticket-types/create"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/ticket-types/update",
+      "serviceUrl": "https://public-api.luma.com/v1/events/ticket-types/update"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/ticket-types/delete",
+      "serviceUrl": "https://public-api.luma.com/v1/events/ticket-types/delete"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/memberships/members/add",
+      "serviceUrl": "https://public-api.luma.com/v1/memberships/members/add"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/memberships/members/update-status",
+      "serviceUrl": "https://public-api.luma.com/v1/memberships/members/update-status"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v2/webhooks/create",
+      "serviceUrl": "https://public-api.luma.com/v2/webhooks/create"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v2/webhooks/update",
+      "serviceUrl": "https://public-api.luma.com/v2/webhooks/update"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/webhooks/delete",
+      "serviceUrl": "https://public-api.luma.com/v1/webhooks/delete"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/cancel/request",
+      "serviceUrl": "https://public-api.luma.com/v1/events/cancel/request"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/events/cancel",
+      "serviceUrl": "https://public-api.luma.com/v1/events/cancel"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/calendars/update",
+      "serviceUrl": "https://public-api.luma.com/v1/calendars/update"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v2/organizations/calendars/create",
+      "serviceUrl": "https://public-api.luma.com/v2/organizations/calendars/create"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "/v1/organizations/events/transfer-calendar",
+      "serviceUrl": "https://public-api.luma.com/v1/organizations/events/transfer-calendar"
+    }
+  ]
+}

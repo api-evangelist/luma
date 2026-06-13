@@ -1,0 +1,15 @@
+{
+  "name": "string",
+  "require_approval": true,
+  "is_hidden": true,
+  "description": "string",
+  "valid_start_at": "string",
+  "valid_end_at": "string",
+  "max_capacity": 0,
+  "type": "free",
+  "cents": 0,
+  "currency": "string",
+  "is_flexible": true,
+  "min_cents": 0,
+  "id": "string"
+}

@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendar_add_event_post_request.json",
+  "title": "V1 Calendar Add Event Post Request",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "platform": {
+          "type": "string",
+          "const": "external"
+        },
+        "submission_mode": {
+          "default": "auto",
+          "description": "`auto` approves the event immediately. `pending` keeps the event pending for calendar admin approval.",
+          "type": "string",
+          "enum": [
+            "auto",
+            "pending"
+          ]
+        },
+        "url": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "start_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+        },
+        "duration_interval": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string",
+          "description": "IANA Timezone, e.g. America/New_York. https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"
+        },
+        "geo_address_json": {
+          "anyOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "manual"
+                    },
+                    "address": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "address"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "google"
+                    },
+                    "place_id": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "place_id"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "host": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "geo_longitude": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "geo_latitude": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "coordinate": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "longitude": {
+                  "type": "number"
+                },
+                "latitude": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "longitude",
+                "latitude"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "platform",
+        "url",
+        "name",
+        "start_at",
+        "duration_interval",
+        "timezone"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "platform": {
+          "type": "string",
+          "const": "luma"
+        },
+        "submission_mode": {
+          "default": "auto",
+          "description": "`auto` approves the event immediately. `pending` keeps the event pending for calendar admin approval.",
+          "type": "string",
+          "enum": [
+            "auto",
+            "pending"
+          ]
+        },
+        "event_id": {
+          "description": "Event ID, this usually starts with evt-",
+          "type": "string"
+        },
+        "event_api_id": {
+          "deprecated": true,
+          "description": "Use `event_id` instead.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "platform"
+      ]
+    }
+  ]
+}

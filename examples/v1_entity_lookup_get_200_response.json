@@ -1,0 +1,12 @@
+{
+  "entity": {
+    "type": "string",
+    "calendar": {
+      "id": "string",
+      "api_id": "string",
+      "name": "string",
+      "slug": null,
+      "avatar_url": null
+    }
+  }
+}

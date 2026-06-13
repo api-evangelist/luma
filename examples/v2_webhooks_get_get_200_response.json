@@ -1,0 +1,10 @@
+{
+  "id": "string",
+  "url": "string",
+  "event_types": [
+    "*"
+  ],
+  "status": "active",
+  "secret": "string",
+  "created_at": "2024-01-01T00:00:00Z"
+}

@@ -1,0 +1,59 @@
+{
+  "type": "string",
+  "data": {
+    "platform": "string",
+    "id": "string",
+    "user_id": "string",
+    "calendar_id": "string",
+    "start_at": "2024-01-01T00:00:00Z",
+    "duration_interval": "string",
+    "end_at": "2024-01-01T00:00:00Z",
+    "created_at": "2024-01-01T00:00:00Z",
+    "timezone": "string",
+    "name": "string",
+    "description": "string",
+    "description_md": "string",
+    "geo_address_json": {
+      "address": "string",
+      "city": "string",
+      "region": "string",
+      "country": "string",
+      "city_state": "string",
+      "full_address": "string",
+      "google_maps_place_id": "string",
+      "apple_maps_place_id": "string",
+      "description": "string"
+    },
+    "coordinate": {
+      "longitude": 0,
+      "latitude": 0
+    },
+    "meeting_url": "string",
+    "location_type": "discord",
+    "location_visibility": "public",
+    "cover_url": "string",
+    "registration_questions": [
+      {
+        "id": "string",
+        "label": "string",
+        "required": true,
+        "question_type": "string"
+      }
+    ],
+    "url": "string",
+    "visibility": "public",
+    "waitlist_status": "disabled",
+    "feedback_email": {
+      "enabled": true,
+      "delay": "string"
+    },
+    "geo_latitude": "string",
+    "geo_longitude": "string",
+    "tags": [
+      {
+        "id": "string",
+        "name": "string"
+      }
+    ]
+  }
+}

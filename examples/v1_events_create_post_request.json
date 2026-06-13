@@ -1,0 +1,38 @@
+{
+  "can_register_for_multiple_tickets": true,
+  "cover_url": "https://example.com",
+  "coordinate": {
+    "longitude": 0,
+    "latitude": 0
+  },
+  "description_md": "string",
+  "end_at": "2024-01-01T00:00:00Z",
+  "geo_address_json": {
+    "type": "string",
+    "address": "string"
+  },
+  "max_capacity": 0,
+  "meeting_url": "string",
+  "name": "string",
+  "name_requirement": "full-name",
+  "phone_number_requirement": "optional",
+  "registration_questions": [
+    {
+      "id": "string",
+      "label": "string",
+      "required": true,
+      "question_type": "string"
+    }
+  ],
+  "reminders_disabled": true,
+  "feedback_email": {
+    "enabled": true,
+    "delay": "string"
+  },
+  "show_guest_list": true,
+  "slug": "string",
+  "start_at": "2024-01-01T00:00:00Z",
+  "timezone": "string",
+  "tint_color": "string",
+  "visibility": "public"
+}

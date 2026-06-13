@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_memberships_members_add_post_200_response.json",
+  "title": "V1 Memberships Members Add Post 200 Response",
+  "type": "object",
+  "properties": {
+    "membership_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "pending",
+        "approved-pending-payment",
+        "declined"
+      ]
+    }
+  },
+  "required": [
+    "membership_id",
+    "status"
+  ]
+}

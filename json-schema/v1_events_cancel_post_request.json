@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_cancel_post_request.json",
+  "title": "V1 Events Cancel Post Request",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Event ID, this usually starts with evt-"
+    },
+    "cancellation_token": {
+      "type": "string",
+      "description": "The cancellation token returned from the request endpoint."
+    },
+    "should_refund": {
+      "description": "Whether to refund paid guests. Required if the event has paid guests.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "event_id",
+    "cancellation_token"
+  ]
+}

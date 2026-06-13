@@ -1,0 +1,432 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_memberships_members_add_post_request.json",
+  "title": "V1 Memberships Members Add Post Request",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+    },
+    "membership_tier_id": {
+      "type": "string"
+    },
+    "registration_answers": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "question_id": {
+                "type": "string"
+              },
+              "value": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "boolean"
+              },
+              "question_type": {
+                "type": "string",
+                "const": "agree-check"
+              }
+            },
+            "required": [
+              "label",
+              "question_id",
+              "question_type"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "question_id": {
+                "type": "string"
+              },
+              "value": {
+                "type": "object",
+                "properties": {
+                  "company": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "job_title": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              },
+              "answer": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "answer_company": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "answer_job_title": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "question_type": {
+                "type": "string",
+                "const": "company"
+              }
+            },
+            "required": [
+              "label",
+              "question_id",
+              "value",
+              "question_type"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "question_id": {
+                "type": "string"
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "answer": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "question_type": {
+                "type": "string",
+                "const": "dropdown"
+              }
+            },
+            "required": [
+              "label",
+              "question_id",
+              "value",
+              "question_type"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "question_id": {
+                "type": "string"
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "answer": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "question_type": {
+                "type": "string",
+                "const": "multi-select"
+              }
+            },
+            "required": [
+              "label",
+              "question_id",
+              "value",
+              "question_type"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "question_id": {
+                "type": "string"
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "answer": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "question_type": {
+                "type": "string",
+                "const": "phone-number"
+              }
+            },
+            "required": [
+              "label",
+              "question_id",
+              "value",
+              "question_type"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "question_id": {
+                "type": "string"
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean",
+                        "const": true
+                      }
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "answer": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean",
+                        "const": true
+                      }
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "question_type": {
+                "type": "string",
+                "const": "terms"
+              }
+            },
+            "required": [
+              "label",
+              "question_id",
+              "question_type"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "question_id": {
+                "type": "string"
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "answer": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "question_type": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "github"
+                  },
+                  {
+                    "type": "string",
+                    "const": "instagram"
+                  },
+                  {
+                    "type": "string",
+                    "const": "linkedin"
+                  },
+                  {
+                    "type": "string",
+                    "const": "long-text"
+                  },
+                  {
+                    "type": "string",
+                    "const": "telegram"
+                  },
+                  {
+                    "type": "string",
+                    "const": "text"
+                  },
+                  {
+                    "type": "string",
+                    "const": "twitter"
+                  },
+                  {
+                    "type": "string",
+                    "const": "youtube"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "label",
+              "question_id",
+              "value",
+              "question_type"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "question_id": {
+                "type": "string"
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "answer": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "question_type": {
+                "type": "string",
+                "const": "url"
+              }
+            },
+            "required": [
+              "label",
+              "question_id",
+              "value",
+              "question_type"
+            ]
+          }
+        ]
+      }
+    },
+    "skip_payment": {
+      "description": "Set to true for paid tiers when handling payment externally. Required for paid tiers.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "email",
+    "membership_tier_id"
+  ]
+}

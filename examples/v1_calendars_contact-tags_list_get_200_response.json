@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "id": "string",
+      "name": "string",
+      "color": "string"
+    }
+  ],
+  "has_more": true
+}

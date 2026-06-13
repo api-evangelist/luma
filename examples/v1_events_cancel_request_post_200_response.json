@@ -1,0 +1,5 @@
+{
+  "cancellation_token": "string",
+  "is_paid": true,
+  "guest_count": 0
+}

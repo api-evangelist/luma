@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_contacts_import_post_request.json",
+  "title": "V1 Calendars Contacts Import Post Request",
+  "type": "object",
+  "properties": {
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "description": "Information about the contacts you want to import. You can include a name and email. Note that we will not set the name of a user once it has already been set."
+    },
+    "tags": {
+      "description": "Tag IDs or tag names to apply to the contacts.",
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "contacts"
+  ]
+}

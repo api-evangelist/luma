@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_contact_tags_update_post_request.json",
+  "title": "V1 Calendars Contact Tags Update Post Request",
+  "type": "object",
+  "properties": {
+    "tag_id": {
+      "type": "string",
+      "description": "Tag ID, this usually starts with tag-"
+    },
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string",
+      "enum": [
+        "cranberry",
+        "barney",
+        "red",
+        "green",
+        "blue",
+        "purple",
+        "yellow",
+        "orange"
+      ]
+    }
+  },
+  "required": [
+    "tag_id"
+  ]
+}

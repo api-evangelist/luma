@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "id": "string",
+      "name": "string",
+      "description": "string",
+      "tint_color": "string",
+      "access_info": {
+        "type": "string",
+        "require_approval": true
+      }
+    }
+  ],
+  "has_more": true,
+  "next_cursor": "string"
+}

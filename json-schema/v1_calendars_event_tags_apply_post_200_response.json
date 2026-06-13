@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_event_tags_apply_post_200_response.json",
+  "title": "V1 Calendars Event Tags Apply Post 200 Response",
+  "type": "object",
+  "properties": {
+    "applied_count": {
+      "type": "number",
+      "description": "Number of events the tag was successfully applied to"
+    },
+    "skipped_count": {
+      "type": "number",
+      "description": "Number of events skipped because they are not on this calendar"
+    }
+  },
+  "required": [
+    "applied_count",
+    "skipped_count"
+  ]
+}

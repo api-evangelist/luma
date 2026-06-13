@@ -1,0 +1,39 @@
+{
+  "entries": [
+    {
+      "id": "string",
+      "user_id": "string",
+      "user_email": "string",
+      "user_name": "string",
+      "user_first_name": "string",
+      "user_last_name": "string",
+      "approval_status": "approved",
+      "check_in_qr_code": "string",
+      "eth_address": "string",
+      "invited_at": "2024-01-01T00:00:00Z",
+      "joined_at": "2024-01-01T00:00:00Z",
+      "phone_number": "string",
+      "registered_at": "2024-01-01T00:00:00Z",
+      "registration_answers": [
+        null
+      ],
+      "solana_address": "string",
+      "utm_source": "string",
+      "event_tickets": [
+        {
+          "id": "string",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "string",
+          "is_captured": true,
+          "name": "string"
+        }
+      ]
+    }
+  ],
+  "has_more": true,
+  "next_cursor": "string"
+}

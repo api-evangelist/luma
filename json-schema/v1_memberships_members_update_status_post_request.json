@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_memberships_members_update_status_post_request.json",
+  "title": "V1 Memberships Members Update Status Post Request",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "User ID (e.g., 'usr-xxx') or email address"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "declined"
+      ]
+    }
+  },
+  "required": [
+    "user_id",
+    "status"
+  ]
+}

@@ -1,0 +1,997 @@
+{
+  "title": "Luma API Vocabulary",
+  "description": "Terms and properties extracted from the Luma API OpenAPI specification",
+  "source": "https://public-api.luma.com/openapi.json",
+  "terms": [
+    {
+      "term": "Events",
+      "description": "Tag: Events",
+      "type": "tag"
+    },
+    {
+      "term": "event_id",
+      "description": "Event ID, this usually starts with evt-",
+      "type": "string"
+    },
+    {
+      "term": "platform",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "user_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "calendar_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "start_at",
+      "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z",
+      "type": "string"
+    },
+    {
+      "term": "duration_interval",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "end_at",
+      "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z",
+      "type": "string"
+    },
+    {
+      "term": "created_at",
+      "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z",
+      "type": "string"
+    },
+    {
+      "term": "timezone",
+      "description": "IANA Timezone, e.g. America/New_York. https://en.wikipedia.org/wiki/List_of_tz_database_time_zones",
+      "type": "string"
+    },
+    {
+      "term": "name",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "description",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "description_md",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "geo_address_json",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "address",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "city",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "region",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "country",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "city_state",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "full_address",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "google_maps_place_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "apple_maps_place_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "coordinate",
+      "description": "Latitude and longitude of the event location. Null for online events or when the address can't be geocoded.",
+      "type": "string"
+    },
+    {
+      "term": "longitude",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "term": "latitude",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "term": "meeting_url",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "location_type",
+      "description": "`offline` for in-person events. Online events have the meeting platform (`zoom`, `meet`, etc.), or `unknown` if we don't recognize the meeting link. `missing` if the event has no location set.",
+      "type": "string"
+    },
+    {
+      "term": "location_visibility",
+      "description": "Whether the event's address is shown to everyone or only to approved guests. This API always returns the full address.",
+      "type": "string"
+    },
+    {
+      "term": "cover_url",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "registration_questions",
+      "description": "",
+      "type": "array"
+    },
+    {
+      "term": "label",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "required",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "question_type",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "collect_job_title",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "job_title_label",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "options",
+      "description": "",
+      "type": "array"
+    },
+    {
+      "term": "terms",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "content_type",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "content_md",
+      "description": "Markdown content for the terms. Luma converts this to rich text internally.",
+      "type": "string"
+    },
+    {
+      "term": "collect_signature",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "require_review",
+      "description": "When true, guests must open the hosted terms before accepting.",
+      "type": "boolean"
+    },
+    {
+      "term": "url",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "visibility",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "waitlist_status",
+      "description": "`enabled` if the event has a waitlist. New registrations join the waitlist once the event reaches capacity.",
+      "type": "string"
+    },
+    {
+      "term": "feedback_email",
+      "description": "Settings for the post-event feedback email sent to guests.",
+      "type": "object"
+    },
+    {
+      "term": "enabled",
+      "description": "Whether to send the feedback email.",
+      "type": "boolean"
+    },
+    {
+      "term": "delay",
+      "description": "How long after the event ends to send the feedback email. Defaults to PT0M (immediately). Maximum is P7D (7 days).",
+      "type": "string"
+    },
+    {
+      "term": "hosts",
+      "description": "",
+      "type": "array"
+    },
+    {
+      "term": "email",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "first_name",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "last_name",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "avatar_url",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "Calendars",
+      "description": "Tag: Calendars",
+      "type": "tag"
+    },
+    {
+      "term": "slug",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "social_image_url",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "cover_image_url",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "is_personal",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "location",
+      "description": "City the calendar is based in (e.g. for city calendars). Null when the calendar isn't tied to a place.",
+      "type": "string"
+    },
+    {
+      "term": "country_code",
+      "description": "ISO 3166-1 alpha-2 country code, e.g. 'US'.",
+      "type": "string"
+    },
+    {
+      "term": "instagram_handle",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "twitter_handle",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "youtube_handle",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "website",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "before",
+      "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z",
+      "type": "string"
+    },
+    {
+      "term": "after",
+      "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z",
+      "type": "string"
+    },
+    {
+      "term": "pagination_cursor",
+      "description": "Value of `next_cursor` from a previous request.",
+      "type": "string"
+    },
+    {
+      "term": "pagination_limit",
+      "description": "The number of items to return. The server will enforce a maximum number.",
+      "type": "number"
+    },
+    {
+      "term": "platforms",
+      "description": "Which event platforms to include. Defaults to `luma` for backwards compatibility. Pass as repeated query params, e.g. `?platforms=luma&platforms=external`.",
+      "type": "array"
+    },
+    {
+      "term": "sort_column",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "sort_direction",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "status",
+      "description": "Filter by calendar submission status. Defaults to `approved`.",
+      "type": "string"
+    },
+    {
+      "term": "entries",
+      "description": "",
+      "type": "array"
+    },
+    {
+      "term": "host",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "tags",
+      "description": "",
+      "type": "array"
+    },
+    {
+      "term": "has_more",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "next_cursor",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "user_email",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "user_name",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "user_first_name",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "user_last_name",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "approval_status",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "check_in_qr_code",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "eth_address",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "invited_at",
+      "description": "When the guest was invited to the event. Null if they registered on their own.",
+      "type": "string"
+    },
+    {
+      "term": "joined_at",
+      "description": "When the guest first clicked the virtual join link (luma.com/join/...). Only set for online events. Null if the guest has not joined.",
+      "type": "string"
+    },
+    {
+      "term": "phone_number",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "registered_at",
+      "description": "When the guest registered for the event.",
+      "type": "string"
+    },
+    {
+      "term": "registration_answers",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "question_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "value",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "answer",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "company",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "job_title",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "answer_company",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "answer_job_title",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "solana_address",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "utm_source",
+      "description": "The UTM source parameter captured when the guest registered (from the `?utm_source=` query parameter).",
+      "type": "string"
+    },
+    {
+      "term": "event_tickets",
+      "description": "",
+      "type": "array"
+    },
+    {
+      "term": "amount",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "term": "amount_discount",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "term": "amount_tax",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "term": "currency",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "checked_in_at",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "event_ticket_type_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "is_captured",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "event_ticket_orders",
+      "description": "Detailed ticket orders for this guest. Use this to inspect applied coupon_info per order.",
+      "type": "array"
+    },
+    {
+      "term": "coupon_info",
+      "description": "The coupon that was applied to this ticket order, if any.",
+      "type": "string"
+    },
+    {
+      "term": "api_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "percent_off",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "cents_off",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "code",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "Miscellaneous",
+      "description": "Tag: Miscellaneous",
+      "type": "tag"
+    },
+    {
+      "term": "color",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "entity",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "type",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "calendar",
+      "description": "",
+      "type": "object"
+    },
+    {
+      "term": "event",
+      "description": "",
+      "type": "object"
+    },
+    {
+      "term": "event_api_id",
+      "description": "Use `event_id` instead.",
+      "type": "string"
+    },
+    {
+      "term": "query",
+      "description": "Search over names and emails.",
+      "type": "string"
+    },
+    {
+      "term": "calendar_membership_tier_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "membership_status",
+      "description": "This is relevant for Calendar Memberships but not relevant otherwise.",
+      "type": "string"
+    },
+    {
+      "term": "event_approved_count",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "term": "event_checked_in_count",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "term": "revenue_usd_cents",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "term": "membership",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "remaining_count",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "term": "valid_start_at",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "valid_end_at",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "include_hidden",
+      "description": "Include hidden ticket types",
+      "type": "string"
+    },
+    {
+      "term": "require_approval",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "is_hidden",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "max_capacity",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "cents",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "is_flexible",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "min_cents",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "Memberships",
+      "description": "Tag: Memberships",
+      "type": "tag"
+    },
+    {
+      "term": "tint_color",
+      "description": "A hex color like '#bb2dc7'. Alpha channels (#rgba, #rrggbbaa) are automatically stripped.",
+      "type": "string"
+    },
+    {
+      "term": "access_info",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "stripe_account_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "stripe_product_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "stripe_monthly_price_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "amount_monthly",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "stripe_yearly_price_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "amount_yearly",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "Webhooks",
+      "description": "Tag: Webhooks",
+      "type": "tag"
+    },
+    {
+      "term": "event_types",
+      "description": "",
+      "type": "array"
+    },
+    {
+      "term": "secret",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "Organizations",
+      "description": "Tag: Organizations",
+      "type": "tag"
+    },
+    {
+      "term": "user_api_id",
+      "description": "Use `user_id` instead.",
+      "type": "string"
+    },
+    {
+      "term": "calendar_api_id",
+      "description": "Use `calendar_id` instead.",
+      "type": "string"
+    },
+    {
+      "term": "zoom_meeting_url",
+      "description": "Use `meeting_url` instead. Not all meetings use Zoom.",
+      "type": "string"
+    },
+    {
+      "term": "geo_latitude",
+      "description": "Use `coordinate.latitude` instead.",
+      "type": "string"
+    },
+    {
+      "term": "geo_longitude",
+      "description": "Use `coordinate.longitude` instead.",
+      "type": "string"
+    },
+    {
+      "term": "managing_calendars",
+      "description": "Calendars with manage access to this event, with the event's status on each. Calendars that only list the event without manage access are not included.",
+      "type": "array"
+    },
+    {
+      "term": "can_register_for_multiple_tickets",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "term": "place_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "name_requirement",
+      "description": "Luma collects the name of every guest as they register. Choose if you'd like to split this into two fields to encourage guests to enter their first and last name.",
+      "type": "string"
+    },
+    {
+      "term": "phone_number_requirement",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "reminders_disabled",
+      "description": "By default, Luma will send reminders before the event. Turn off if you'd like more control over event communications.",
+      "type": "boolean"
+    },
+    {
+      "term": "show_guest_list",
+      "description": "When the guest list is shown, approved guests will be able to see who else is going to the event.",
+      "type": "boolean"
+    },
+    {
+      "term": "suppress_notifications",
+      "description": "If true, Luma will not notify guests (via email or push notification) when updating the event name, time, or location.",
+      "type": "boolean"
+    },
+    {
+      "term": "guest_id",
+      "description": "Guest identifier \u2014 the guest ID (gst-), a ticket key, a guest key (g-), or the user's email.",
+      "type": "string"
+    },
+    {
+      "term": "should_refund",
+      "description": "If you are moving a guest who has paid to `declined`, `waitlist`, or `pending_approval`, should we refund their payment? Defaults to false.",
+      "type": "boolean"
+    },
+    {
+      "term": "send_email",
+      "description": "Optional. Whether Luma should email the guest about the status change. Defaults to true. Set to false if your integration sends its own notifications.",
+      "type": "string"
+    },
+    {
+      "term": "message",
+      "description": "Optional. Personal message included in the email we send the guest about the status change. Max of 200 characters. Can't be combined with `send_email: false`.",
+      "type": "string"
+    },
+    {
+      "term": "guests",
+      "description": "Information about the guests you want to invite to the event. If a user already has a name, this will not overwrite their name.",
+      "type": "array"
+    },
+    {
+      "term": "ticket",
+      "description": "Optional. Assign a single ticket of the specified type to each guest. Cannot be used with `tickets` parameter.",
+      "type": "string"
+    },
+    {
+      "term": "tickets",
+      "description": "Optional. Assign multiple tickets to each guest. Each guest receives all tickets in the array. Use this to add multiple tickets of the same or different types. Cannot be used with `ticket` parameter.",
+      "type": "string"
+    },
+    {
+      "term": "access_level",
+      "description": "Defaults to manager.",
+      "type": "string"
+    },
+    {
+      "term": "is_visible",
+      "description": "Defaults to true.",
+      "type": "boolean"
+    },
+    {
+      "term": "discount",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "discount_type",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "contacts",
+      "description": "Information about the contacts you want to import. You can include a name and email. Note that we will not set the name of a user once it has already been set.",
+      "type": "array"
+    },
+    {
+      "term": "tag_id",
+      "description": "Tag ID, this usually starts with tag-",
+      "type": "string"
+    },
+    {
+      "term": "tag",
+      "description": "Tag ID (e.g., 'tag-123') or tag name",
+      "type": "string"
+    },
+    {
+      "term": "user_ids",
+      "description": "Array of user IDs to apply the tag to",
+      "type": "array"
+    },
+    {
+      "term": "emails",
+      "description": "Array of email addresses to apply the tag to",
+      "type": "array"
+    },
+    {
+      "term": "applied_count",
+      "description": "Number of contacts the tag was successfully applied to",
+      "type": "number"
+    },
+    {
+      "term": "skipped_count",
+      "description": "Number of users skipped because they are not calendar contacts",
+      "type": "number"
+    },
+    {
+      "term": "removed_count",
+      "description": "Number of contacts the tag was successfully removed from",
+      "type": "number"
+    },
+    {
+      "term": "event_ids",
+      "description": "Array of event IDs to apply the tag to",
+      "type": "array"
+    },
+    {
+      "term": "submission_mode",
+      "description": "`auto` approves the event immediately. `pending` keeps the event pending for calendar admin approval.",
+      "type": "string"
+    },
+    {
+      "term": "calendar_event_id",
+      "description": "Calendar event ID (starts with `calev-`). You can also pass the Luma event ID (starts with `evt-`) \u2014 we'll resolve it to the active submission on your calendar.",
+      "type": "string"
+    },
+    {
+      "term": "upload_url",
+      "description": "You'll upload your image here using a PUT request.",
+      "type": "string"
+    },
+    {
+      "term": "file_url",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "membership_tier_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "skip_payment",
+      "description": "Set to true for paid tiers when handling payment externally. Required for paid tiers.",
+      "type": "boolean"
+    },
+    {
+      "term": "membership_id",
+      "description": "",
+      "type": "string"
+    },
+    {
+      "term": "cancellation_token",
+      "description": "A short-lived token to confirm the cancellation. Expires after 15 minutes.",
+      "type": "string"
+    },
+    {
+      "term": "is_paid",
+      "description": "Whether the event has paid guests. If true, you must pass should_refund in the confirm step.",
+      "type": "boolean"
+    },
+    {
+      "term": "guest_count",
+      "description": "The number of approved guests for this event.",
+      "type": "number"
+    },
+    {
+      "term": "Webhook Types",
+      "description": "Tag: Webhook Types",
+      "type": "tag"
+    },
+    {
+      "term": "data",
+      "description": "",
+      "type": "object"
+    },
+    {
+      "term": "custom_source",
+      "description": "Use `utm_source` instead.",
+      "type": "string"
+    },
+    {
+      "term": "event_ticket",
+      "description": "",
+      "type": "object"
+    },
+    {
+      "term": "user",
+      "description": "",
+      "type": "object"
+    },
+    {
+      "term": "host_name",
+      "description": "",
+      "type": "string"
+    }
+  ]
+}

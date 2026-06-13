@@ -1,0 +1,7 @@
+{
+  "id": "string",
+  "event_types": [
+    "*"
+  ],
+  "status": "active"
+}

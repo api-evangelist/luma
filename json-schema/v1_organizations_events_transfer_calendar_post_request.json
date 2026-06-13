@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_organizations_events_transfer_calendar_post_request.json",
+  "title": "V1 Organizations Events Transfer Calendar Post Request",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Event ID, this usually starts with evt-"
+    },
+    "calendar_id": {
+      "type": "string",
+      "description": "Destination calendar ID, this usually starts with cal-. Must belong to the organization."
+    }
+  },
+  "required": [
+    "event_id",
+    "calendar_id"
+  ]
+}

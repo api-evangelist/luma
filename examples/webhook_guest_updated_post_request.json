@@ -1,0 +1,118 @@
+{
+  "type": "string",
+  "data": {
+    "id": "string",
+    "user_id": "string",
+    "user_email": "string",
+    "user_name": "string",
+    "user_first_name": "string",
+    "user_last_name": "string",
+    "approval_status": "approved",
+    "check_in_qr_code": "string",
+    "eth_address": "string",
+    "invited_at": "2024-01-01T00:00:00Z",
+    "joined_at": "2024-01-01T00:00:00Z",
+    "phone_number": "string",
+    "registered_at": "2024-01-01T00:00:00Z",
+    "registration_answers": [
+      {
+        "label": null,
+        "question_id": null,
+        "value": null,
+        "answer": null,
+        "question_type": null
+      }
+    ],
+    "solana_address": "string",
+    "utm_source": "string",
+    "event_tickets": [
+      {
+        "id": "string",
+        "amount": 0,
+        "amount_discount": 0,
+        "amount_tax": 0,
+        "currency": "solana_sol",
+        "checked_in_at": "2024-01-01T00:00:00Z",
+        "event_ticket_type_id": "string",
+        "is_captured": true,
+        "name": "string",
+        "api_id": "string"
+      }
+    ],
+    "custom_source": "string",
+    "event_ticket_orders": [
+      {
+        "id": "string",
+        "amount": 0,
+        "amount_discount": 0,
+        "amount_tax": 0,
+        "currency": "solana_sol",
+        "coupon_info": {
+          "api_id": null,
+          "percent_off": null,
+          "cents_off": null,
+          "currency": null,
+          "code": null
+        },
+        "is_captured": true,
+        "api_id": "string"
+      }
+    ],
+    "event": {
+      "platform": "string",
+      "id": "string",
+      "user_id": "string",
+      "calendar_id": "string",
+      "start_at": "2024-01-01T00:00:00Z",
+      "duration_interval": "string",
+      "end_at": "2024-01-01T00:00:00Z",
+      "created_at": "2024-01-01T00:00:00Z",
+      "timezone": "string",
+      "name": "string",
+      "description": "string",
+      "description_md": "string",
+      "geo_address_json": {
+        "address": "string",
+        "city": null,
+        "region": null,
+        "country": null,
+        "city_state": null,
+        "full_address": null,
+        "google_maps_place_id": null,
+        "apple_maps_place_id": null,
+        "description": null
+      },
+      "coordinate": {
+        "longitude": 0,
+        "latitude": 0
+      },
+      "meeting_url": "string",
+      "location_type": "discord",
+      "location_visibility": "public",
+      "cover_url": "string",
+      "registration_questions": [
+        {
+          "id": null,
+          "label": null,
+          "required": null,
+          "question_type": null
+        }
+      ],
+      "url": "string",
+      "visibility": "public",
+      "waitlist_status": "disabled",
+      "feedback_email": {
+        "enabled": true,
+        "delay": "string"
+      },
+      "geo_latitude": "string",
+      "geo_longitude": "string",
+      "tags": [
+        {
+          "id": "string",
+          "name": "string"
+        }
+      ]
+    }
+  }
+}

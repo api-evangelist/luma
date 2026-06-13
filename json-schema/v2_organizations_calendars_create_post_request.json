@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v2_organizations_calendars_create_post_request.json",
+  "title": "V2 Organizations Calendars Create Post Request",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the calendar."
+    },
+    "slug": {
+      "description": "URL slug for the calendar page (e.g. 'my-community' \u2192 lu.ma/my-community).",
+      "type": "string"
+    },
+    "description": {
+      "description": "Short description of the calendar.",
+      "type": "string"
+    },
+    "avatar_url": {
+      "description": "Specify an image that has been uploaded to the Luma CDN. If not provided, a random default avatar will be used.",
+      "type": "string",
+      "format": "uri"
+    },
+    "tint_color": {
+      "description": "Tint color for the calendar in hex format (e.g. '#E3CBEF'). If not provided, a random color matching the default avatar will be used.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

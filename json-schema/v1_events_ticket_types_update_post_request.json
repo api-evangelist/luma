@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_ticket_types_update_post_request.json",
+  "title": "V1 Events Ticket Types Update Post Request",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "event_ticket_type_id": {
+          "type": "string",
+          "description": "Ticket type ID, this usually starts with ttype-"
+        }
+      },
+      "required": [
+        "event_ticket_type_id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "require_approval": {
+          "type": "boolean"
+        },
+        "is_hidden": {
+          "type": "boolean"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valid_start_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "ISO 8601 Date. For example, 2025-09-01"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valid_end_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "ISO 8601 Date. For example, 2025-09-01"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max_capacity": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "free",
+            "paid"
+          ]
+        },
+        "cents": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "is_flexible": {
+          "type": "boolean"
+        },
+        "min_cents": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

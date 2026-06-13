@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_contact_tags_delete_post_request.json",
+  "title": "V1 Calendars Contact Tags Delete Post Request",
+  "type": "object",
+  "properties": {
+    "tag_id": {
+      "type": "string",
+      "description": "Tag ID, this usually starts with tag-"
+    }
+  },
+  "required": [
+    "tag_id"
+  ]
+}

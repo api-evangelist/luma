@@ -1,0 +1,389 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/webhook_calendar.event.added_post_request.json",
+  "title": "Webhook Calendar.Event.Added Post Request",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "calendar.event.added"
+    },
+    "data": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "platform": {
+              "type": "string",
+              "const": "luma"
+            },
+            "id": {
+              "type": "string",
+              "description": "The event ID"
+            },
+            "api_id": {
+              "description": "Deprecated, use id instead",
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "cover_url": {
+              "type": "string"
+            },
+            "start_at": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+              "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+            },
+            "end_at": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+              "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+            },
+            "timezone": {
+              "type": "string"
+            },
+            "calendar": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "avatar_url": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "social_image_url": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "cover_image_url": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "is_personal": {
+                      "type": "boolean"
+                    },
+                    "location": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "city": {
+                              "type": "string",
+                              "description": "City name, e.g. 'New York'."
+                            },
+                            "region": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ],
+                              "description": "State or province, e.g. 'New York' or 'California'."
+                            },
+                            "country": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ],
+                              "description": "Country name, e.g. 'United States'. Null for cities in disputed territories where Google omits the country."
+                            },
+                            "country_code": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ],
+                              "description": "ISO 3166-1 alpha-2 country code, e.g. 'US'."
+                            },
+                            "timezone": {
+                              "type": "string",
+                              "description": "IANA timezone of the city, e.g. 'America/New_York'."
+                            }
+                          },
+                          "required": [
+                            "city",
+                            "region",
+                            "country",
+                            "country_code",
+                            "timezone"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "description": "City the calendar is based in (e.g. for city calendars). Null when the calendar isn't tied to a place."
+                    },
+                    "coordinate": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "longitude": {
+                              "type": "number"
+                            },
+                            "latitude": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "longitude",
+                            "latitude"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "description": "Latitude and longitude of the calendar's primary location (e.g. city calendars). Null when the calendar isn't tied to a place."
+                    },
+                    "instagram_handle": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "twitter_handle": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "youtube_handle": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "website": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "slug",
+                    "avatar_url",
+                    "url",
+                    "description",
+                    "social_image_url",
+                    "cover_image_url",
+                    "is_personal",
+                    "location",
+                    "coordinate",
+                    "instagram_handle",
+                    "twitter_handle",
+                    "youtube_handle",
+                    "website"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "hosts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "avatar_url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "avatar_url"
+                ]
+              }
+            }
+          },
+          "required": [
+            "platform",
+            "id",
+            "name",
+            "url",
+            "cover_url",
+            "start_at",
+            "end_at",
+            "timezone",
+            "calendar",
+            "hosts"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "platform": {
+              "type": "string",
+              "const": "external"
+            },
+            "id": {
+              "type": "string",
+              "description": "The calendar event ID"
+            },
+            "api_id": {
+              "description": "Deprecated, use id instead",
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "start_at": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+              "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+            },
+            "end_at": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+                  "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "timezone": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "host_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "platform",
+            "id",
+            "name",
+            "url",
+            "start_at",
+            "end_at",
+            "timezone",
+            "host_name"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "data"
+  ]
+}

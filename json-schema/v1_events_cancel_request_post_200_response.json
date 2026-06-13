@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_cancel_request_post_200_response.json",
+  "title": "V1 Events Cancel Request Post 200 Response",
+  "type": "object",
+  "properties": {
+    "cancellation_token": {
+      "type": "string",
+      "description": "A short-lived token to confirm the cancellation. Expires after 15 minutes."
+    },
+    "is_paid": {
+      "type": "boolean",
+      "description": "Whether the event has paid guests. If true, you must pass should_refund in the confirm step."
+    },
+    "guest_count": {
+      "type": "number",
+      "description": "The number of approved guests for this event."
+    }
+  },
+  "required": [
+    "cancellation_token",
+    "is_paid",
+    "guest_count"
+  ]
+}

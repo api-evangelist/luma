@@ -1,0 +1,20 @@
+{
+  "platform": "string",
+  "submission_mode": "auto",
+  "url": "string",
+  "name": "string",
+  "start_at": "2024-01-01T00:00:00Z",
+  "duration_interval": "string",
+  "timezone": "string",
+  "geo_address_json": {
+    "type": "string",
+    "address": "string"
+  },
+  "host": "string",
+  "geo_longitude": 0,
+  "geo_latitude": 0,
+  "coordinate": {
+    "longitude": 0,
+    "latitude": 0
+  }
+}

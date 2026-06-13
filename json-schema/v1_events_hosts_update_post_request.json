@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_events_hosts_update_post_request.json",
+  "title": "V1 Events Hosts Update Post Request",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Event ID, this usually starts with evt-"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email of the host to update."
+    },
+    "access_level": {
+      "description": "The new access level for the host. One of \"none\", \"check-in\", or \"manager\". The event creator\u2019s access level cannot be changed.",
+      "type": "string",
+      "enum": [
+        "none",
+        "check-in",
+        "manager"
+      ]
+    },
+    "is_visible": {
+      "description": "Whether the host is visible on the event page.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "event_id",
+    "email"
+  ]
+}

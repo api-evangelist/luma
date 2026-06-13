@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_event_tags_unapply_post_200_response.json",
+  "title": "V1 Calendars Event Tags Unapply Post 200 Response",
+  "type": "object",
+  "properties": {
+    "removed_count": {
+      "type": "number",
+      "description": "Number of events the tag was successfully removed from"
+    },
+    "skipped_count": {
+      "type": "number",
+      "description": "Number of events skipped because they are not on this calendar"
+    }
+  },
+  "required": [
+    "removed_count",
+    "skipped_count"
+  ]
+}

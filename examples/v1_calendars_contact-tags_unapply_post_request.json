@@ -1,0 +1,9 @@
+{
+  "tag": "string",
+  "user_ids": [
+    "string"
+  ],
+  "emails": [
+    "string"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "event_id": "string",
+  "cancellation_token": "string",
+  "should_refund": true
+}

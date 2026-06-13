@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendar_lookup_event_get_200_response.json",
+  "title": "V1 Calendar Lookup Event Get 200 Response",
+  "type": "object",
+  "properties": {
+    "event": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "api_id": {
+              "type": "string",
+              "deprecated": true,
+              "description": "Use `id` instead."
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "approved",
+                "pending",
+                "rejected"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "api_id",
+            "status"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "event"
+  ]
+}

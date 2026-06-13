@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/luma/main/json-schema/v1_calendars_contact_tags_apply_post_request.json",
+  "title": "V1 Calendars Contact Tags Apply Post Request",
+  "type": "object",
+  "properties": {
+    "tag": {
+      "type": "string",
+      "description": "Tag ID (e.g., 'tag-123') or tag name"
+    },
+    "user_ids": {
+      "description": "Array of user IDs to apply the tag to",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "emails": {
+      "description": "Array of email addresses to apply the tag to",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "tag"
+  ]
+}

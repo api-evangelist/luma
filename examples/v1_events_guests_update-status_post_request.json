@@ -1,0 +1,8 @@
+{
+  "event_id": "string",
+  "guest_id": "string",
+  "status": "approved",
+  "should_refund": true,
+  "send_email": true,
+  "message": "string"
+}
