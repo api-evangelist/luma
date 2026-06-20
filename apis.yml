@@ -1,6 +1,6 @@
 name: Luma
 description: Modern event hosting platform with REST APIs for creating events, managing ticketing, tracking attendance, and building community around live and virtual events.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -16,7 +16,7 @@ tags:
 apis:
   - name: Luma API
     description: REST API for creating and managing events, calendars, guests, tickets, coupons, tags, contacts, memberships, hosts, and webhooks on the Luma event platform.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.luma.com/reference
     baseURL: https://public-api.luma.com
     tags:
