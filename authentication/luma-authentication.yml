@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-luma-api-key
+  description: API key to authenticate requests to the Luma API. Generate an API key on your
+    Luma dashboard.
+  sources:
+  - openapi/openapi.json

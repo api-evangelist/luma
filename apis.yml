@@ -45,6 +45,12 @@ apis:
         email: support@lu.ma
         url: https://help.luma.com/
 common:
+  - type: VulnerabilityDisclosure
+    url: security/luma-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/luma-domain-security.yml
+  - type: Authentication
+    url: authentication/luma-authentication.yml
   - type: Portal
     url: https://docs.luma.com
   - type: Documentation
