@@ -45,6 +45,8 @@ apis:
         email: support@lu.ma
         url: https://help.luma.com/
 common:
+  - type: AgenticAccess
+    url: agentic-access/luma-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/luma-vulnerability-disclosure.yml
   - type: DomainSecurity
