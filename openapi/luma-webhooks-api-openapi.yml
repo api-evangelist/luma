@@ -1,0 +1,371 @@
+openapi: 3.1.0
+info:
+  title: Luma Calendars Webhooks API
+  version: 1.0.0
+  description: 'API for interacting with Luma''s event platform.
+
+
+    ## Rate Limits
+
+
+    The Luma API uses a per-minute rate limit shared across `GET` and `POST` requests:
+
+
+    - **Calendar API keys** and OAuth tokens: **200 requests/minute** per calendar.
+
+    - **Organization API keys**: **500 requests/minute** per organization.
+
+
+    When you exceed the limit the API returns `429 Too Many Requests`. Back off before retrying.'
+  contact:
+    name: Luma Support
+    url: https://help.luma.com
+  license:
+    name: Proprietary
+servers:
+- url: https://public-api.luma.com
+  description: Production server
+security:
+- apiKeyAuth: []
+tags:
+- name: Webhooks
+paths:
+  /v1/webhooks/list:
+    get:
+      tags:
+      - Webhooks
+      summary: List Webhooks
+      parameters:
+      - name: pagination_cursor
+        in: query
+        required: false
+        schema:
+          description: Value of `next_cursor` from a previous request.
+          type: string
+        description: Value of `next_cursor` from a previous request.
+      - name: pagination_limit
+        in: query
+        required: false
+        schema:
+          description: The number of items to return. The server will enforce a maximum number.
+          type: number
+        description: The number of items to return. The server will enforce a maximum number.
+      description: List all webhook endpoints for the calendar.
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        url:
+                          type: string
+                        event_types:
+                          type: array
+                          items:
+                            type: string
+                            enum:
+                            - '*'
+                            - calendar.event.added
+                            - calendar.person.subscribed
+                            - event.canceled
+                            - event.created
+                            - event.updated
+                            - guest.registered
+                            - guest.updated
+                            - ticket.registered
+                        status:
+                          type: string
+                          enum:
+                          - active
+                          - paused
+                        secret:
+                          type: string
+                        created_at:
+                          type: string
+                          format: date-time
+                          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
+                          description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
+                      required:
+                      - id
+                      - url
+                      - event_types
+                      - status
+                      - secret
+                      - created_at
+                  has_more:
+                    type: boolean
+                  next_cursor:
+                    type: string
+                required:
+                - entries
+                - has_more
+  /v2/webhooks/get:
+    get:
+      tags:
+      - Webhooks
+      summary: Get Webhook
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: string
+      description: Get details about a specific webhook endpoint.
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  id:
+                    type: string
+                  url:
+                    type: string
+                  event_types:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - '*'
+                      - calendar.event.added
+                      - calendar.person.subscribed
+                      - event.canceled
+                      - event.created
+                      - event.updated
+                      - guest.registered
+                      - guest.updated
+                      - ticket.registered
+                  status:
+                    type: string
+                    enum:
+                    - active
+                    - paused
+                  secret:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                    pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
+                    description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
+                required:
+                - id
+                - url
+                - event_types
+                - status
+                - secret
+                - created_at
+  /v2/webhooks/create:
+    post:
+      tags:
+      - Webhooks
+      summary: Create Webhook
+      description: Create a new webhook endpoint to receive event notifications.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  pattern: ^http.*
+                event_types:
+                  minItems: 1
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - '*'
+                    - calendar.event.added
+                    - calendar.person.subscribed
+                    - event.canceled
+                    - event.created
+                    - event.updated
+                    - guest.registered
+                    - guest.updated
+                    - ticket.registered
+              required:
+              - url
+              - event_types
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  id:
+                    type: string
+                  url:
+                    type: string
+                  event_types:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - '*'
+                      - calendar.event.added
+                      - calendar.person.subscribed
+                      - event.canceled
+                      - event.created
+                      - event.updated
+                      - guest.registered
+                      - guest.updated
+                      - ticket.registered
+                  status:
+                    type: string
+                    enum:
+                    - active
+                    - paused
+                  secret:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                    pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
+                    description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
+                required:
+                - id
+                - url
+                - event_types
+                - status
+                - secret
+                - created_at
+  /v2/webhooks/update:
+    post:
+      tags:
+      - Webhooks
+      summary: Update Webhook
+      description: Update a webhook endpoint's event types or status (active/paused).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              type: object
+              properties:
+                id:
+                  type: string
+                event_types:
+                  minItems: 1
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - '*'
+                    - calendar.event.added
+                    - calendar.person.subscribed
+                    - event.canceled
+                    - event.created
+                    - event.updated
+                    - guest.registered
+                    - guest.updated
+                    - ticket.registered
+                status:
+                  type: string
+                  enum:
+                  - active
+                  - paused
+              required:
+              - id
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  id:
+                    type: string
+                  url:
+                    type: string
+                  event_types:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - '*'
+                      - calendar.event.added
+                      - calendar.person.subscribed
+                      - event.canceled
+                      - event.created
+                      - event.updated
+                      - guest.registered
+                      - guest.updated
+                      - ticket.registered
+                  status:
+                    type: string
+                    enum:
+                    - active
+                    - paused
+                  secret:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                    pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
+                    description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
+                required:
+                - id
+                - url
+                - event_types
+                - status
+                - secret
+                - created_at
+  /v1/webhooks/delete:
+    post:
+      tags:
+      - Webhooks
+      summary: Delete Webhook
+      description: Delete a webhook endpoint.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              type: object
+              properties:
+                id:
+                  type: string
+              required:
+              - id
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Empty response
+                properties: {}
+                additionalProperties: false
+                x-stainless-empty-object: true
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-luma-api-key
+      description: API key to authenticate requests to the Luma API. Generate an API key on your Luma dashboard.

@@ -1,0 +1,747 @@
+openapi: 3.1.0
+info:
+  title: Luma Calendars Memberships API
+  version: 1.0.0
+  description: 'API for interacting with Luma''s event platform.
+
+
+    ## Rate Limits
+
+
+    The Luma API uses a per-minute rate limit shared across `GET` and `POST` requests:
+
+
+    - **Calendar API keys** and OAuth tokens: **200 requests/minute** per calendar.
+
+    - **Organization API keys**: **500 requests/minute** per organization.
+
+
+    When you exceed the limit the API returns `429 Too Many Requests`. Back off before retrying.'
+  contact:
+    name: Luma Support
+    url: https://help.luma.com
+  license:
+    name: Proprietary
+servers:
+- url: https://public-api.luma.com
+  description: Production server
+security:
+- apiKeyAuth: []
+tags:
+- name: Memberships
+paths:
+  /v1/memberships/tiers/list:
+    get:
+      tags:
+      - Memberships
+      summary: List Membership Tiers
+      parameters:
+      - name: pagination_cursor
+        in: query
+        required: false
+        schema:
+          description: Value of `next_cursor` from a previous request.
+          type: string
+        description: Value of `next_cursor` from a previous request.
+      - name: pagination_limit
+        in: query
+        required: false
+        schema:
+          description: The number of items to return. The server will enforce a maximum number.
+          type: number
+        description: The number of items to return. The server will enforce a maximum number.
+      description: List available membership tiers for the calendar.
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        description:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        tint_color:
+                          description: 'A hex color like ''#bb2dc7''. Alpha channels (#rgba, #rrggbbaa) are automatically stripped.'
+                          type: string
+                        access_info:
+                          oneOf:
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                const: free
+                              require_approval:
+                                type: boolean
+                            required:
+                            - type
+                            - require_approval
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                const: payment-once
+                              amount:
+                                type: number
+                                exclusiveMinimum: 0
+                              currency:
+                                type: string
+                                enum:
+                                - solana_sol
+                                - solana_usdc
+                                - aed
+                                - afn
+                                - all
+                                - amd
+                                - ang
+                                - aoa
+                                - ars
+                                - aud
+                                - awg
+                                - azn
+                                - bam
+                                - bbd
+                                - bdt
+                                - bgn
+                                - bhd
+                                - bif
+                                - bmd
+                                - bnd
+                                - bob
+                                - brl
+                                - bsd
+                                - bwp
+                                - byn
+                                - bzd
+                                - cad
+                                - cdf
+                                - chf
+                                - clp
+                                - cny
+                                - cop
+                                - crc
+                                - cve
+                                - czk
+                                - djf
+                                - dkk
+                                - dop
+                                - dzd
+                                - egp
+                                - etb
+                                - eur
+                                - fjd
+                                - fkp
+                                - gbp
+                                - gel
+                                - ghs
+                                - gip
+                                - gmd
+                                - gnf
+                                - gtq
+                                - gyd
+                                - hkd
+                                - hnl
+                                - htg
+                                - huf
+                                - idr
+                                - ils
+                                - inr
+                                - isk
+                                - jmd
+                                - jod
+                                - jpy
+                                - kes
+                                - kgs
+                                - khr
+                                - kmf
+                                - krw
+                                - kwd
+                                - kyd
+                                - kzt
+                                - lak
+                                - lbp
+                                - lkr
+                                - lrd
+                                - lsl
+                                - mad
+                                - mdl
+                                - mga
+                                - mkd
+                                - mmk
+                                - mnt
+                                - mop
+                                - mur
+                                - mvr
+                                - mwk
+                                - mxn
+                                - myr
+                                - mzn
+                                - nad
+                                - ngn
+                                - nio
+                                - nok
+                                - npr
+                                - nzd
+                                - omr
+                                - pab
+                                - pen
+                                - pgk
+                                - php
+                                - pkr
+                                - pln
+                                - pyg
+                                - qar
+                                - ron
+                                - rsd
+                                - rub
+                                - rwf
+                                - sar
+                                - sbd
+                                - scr
+                                - sek
+                                - sgd
+                                - shp
+                                - sle
+                                - sos
+                                - srd
+                                - std
+                                - szl
+                                - thb
+                                - tjs
+                                - tnd
+                                - top
+                                - try
+                                - ttd
+                                - twd
+                                - tzs
+                                - uah
+                                - ugx
+                                - usd
+                                - uyu
+                                - uzs
+                                - vnd
+                                - vuv
+                                - wst
+                                - xaf
+                                - xcd
+                                - xof
+                                - xpf
+                                - yer
+                                - zar
+                                - zmw
+                              require_approval:
+                                type: boolean
+                            required:
+                            - type
+                            - amount
+                            - currency
+                            - require_approval
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                const: payment-recurring
+                              currency:
+                                type: string
+                                enum:
+                                - solana_sol
+                                - solana_usdc
+                                - aed
+                                - afn
+                                - all
+                                - amd
+                                - ang
+                                - aoa
+                                - ars
+                                - aud
+                                - awg
+                                - azn
+                                - bam
+                                - bbd
+                                - bdt
+                                - bgn
+                                - bhd
+                                - bif
+                                - bmd
+                                - bnd
+                                - bob
+                                - brl
+                                - bsd
+                                - bwp
+                                - byn
+                                - bzd
+                                - cad
+                                - cdf
+                                - chf
+                                - clp
+                                - cny
+                                - cop
+                                - crc
+                                - cve
+                                - czk
+                                - djf
+                                - dkk
+                                - dop
+                                - dzd
+                                - egp
+                                - etb
+                                - eur
+                                - fjd
+                                - fkp
+                                - gbp
+                                - gel
+                                - ghs
+                                - gip
+                                - gmd
+                                - gnf
+                                - gtq
+                                - gyd
+                                - hkd
+                                - hnl
+                                - htg
+                                - huf
+                                - idr
+                                - ils
+                                - inr
+                                - isk
+                                - jmd
+                                - jod
+                                - jpy
+                                - kes
+                                - kgs
+                                - khr
+                                - kmf
+                                - krw
+                                - kwd
+                                - kyd
+                                - kzt
+                                - lak
+                                - lbp
+                                - lkr
+                                - lrd
+                                - lsl
+                                - mad
+                                - mdl
+                                - mga
+                                - mkd
+                                - mmk
+                                - mnt
+                                - mop
+                                - mur
+                                - mvr
+                                - mwk
+                                - mxn
+                                - myr
+                                - mzn
+                                - nad
+                                - ngn
+                                - nio
+                                - nok
+                                - npr
+                                - nzd
+                                - omr
+                                - pab
+                                - pen
+                                - pgk
+                                - php
+                                - pkr
+                                - pln
+                                - pyg
+                                - qar
+                                - ron
+                                - rsd
+                                - rub
+                                - rwf
+                                - sar
+                                - sbd
+                                - scr
+                                - sek
+                                - sgd
+                                - shp
+                                - sle
+                                - sos
+                                - srd
+                                - std
+                                - szl
+                                - thb
+                                - tjs
+                                - tnd
+                                - top
+                                - try
+                                - ttd
+                                - twd
+                                - tzs
+                                - uah
+                                - ugx
+                                - usd
+                                - uyu
+                                - uzs
+                                - vnd
+                                - vuv
+                                - wst
+                                - xaf
+                                - xcd
+                                - xof
+                                - xpf
+                                - yer
+                                - zar
+                                - zmw
+                              stripe_account_id:
+                                type: string
+                              stripe_product_id:
+                                type: string
+                              stripe_monthly_price_id:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              amount_monthly:
+                                anyOf:
+                                - type: number
+                                  exclusiveMinimum: 0
+                                - type: 'null'
+                              stripe_yearly_price_id:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              amount_yearly:
+                                anyOf:
+                                - type: number
+                                  exclusiveMinimum: 0
+                                - type: 'null'
+                              require_approval:
+                                type: boolean
+                            required:
+                            - type
+                            - currency
+                            - stripe_account_id
+                            - stripe_product_id
+                            - require_approval
+                      required:
+                      - id
+                      - name
+                      - description
+                      - tint_color
+                      - access_info
+                  has_more:
+                    type: boolean
+                  next_cursor:
+                    type: string
+                required:
+                - entries
+                - has_more
+  /v1/memberships/members/add:
+    post:
+      tags:
+      - Memberships
+      summary: Add Member to Tier
+      description: Add a user to a membership tier. For paid tiers, set skip_payment to true if you are handling payment externally.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                membership_tier_id:
+                  type: string
+                registration_answers:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        label:
+                          type: string
+                        question_id:
+                          type: string
+                        value:
+                          type: boolean
+                        answer:
+                          type: boolean
+                        question_type:
+                          type: string
+                          const: agree-check
+                      required:
+                      - label
+                      - question_id
+                      - question_type
+                    - type: object
+                      properties:
+                        label:
+                          type: string
+                        question_id:
+                          type: string
+                        value:
+                          type: object
+                          properties:
+                            company:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                            job_title:
+                              anyOf:
+                              - type: string
+                              - type: 'null'
+                        answer:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        answer_company:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        answer_job_title:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        question_type:
+                          type: string
+                          const: company
+                      required:
+                      - label
+                      - question_id
+                      - value
+                      - question_type
+                    - type: object
+                      properties:
+                        label:
+                          type: string
+                        question_id:
+                          type: string
+                        value:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        answer:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        question_type:
+                          type: string
+                          const: dropdown
+                      required:
+                      - label
+                      - question_id
+                      - value
+                      - question_type
+                    - type: object
+                      properties:
+                        label:
+                          type: string
+                        question_id:
+                          type: string
+                        value:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                          - type: 'null'
+                        answer:
+                          anyOf:
+                          - type: array
+                            items:
+                              type: string
+                          - type: 'null'
+                        question_type:
+                          type: string
+                          const: multi-select
+                      required:
+                      - label
+                      - question_id
+                      - value
+                      - question_type
+                    - type: object
+                      properties:
+                        label:
+                          type: string
+                        question_id:
+                          type: string
+                        value:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        answer:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        question_type:
+                          type: string
+                          const: phone-number
+                      required:
+                      - label
+                      - question_id
+                      - value
+                      - question_type
+                    - type: object
+                      properties:
+                        label:
+                          type: string
+                        question_id:
+                          type: string
+                        value:
+                          anyOf:
+                          - anyOf:
+                            - type: string
+                            - type: boolean
+                              const: true
+                          - type: 'null'
+                        answer:
+                          anyOf:
+                          - anyOf:
+                            - type: string
+                            - type: boolean
+                              const: true
+                          - type: 'null'
+                        question_type:
+                          type: string
+                          const: terms
+                      required:
+                      - label
+                      - question_id
+                      - question_type
+                    - type: object
+                      properties:
+                        label:
+                          type: string
+                        question_id:
+                          type: string
+                        value:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        answer:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        question_type:
+                          anyOf:
+                          - type: string
+                            const: github
+                          - type: string
+                            const: instagram
+                          - type: string
+                            const: linkedin
+                          - type: string
+                            const: long-text
+                          - type: string
+                            const: telegram
+                          - type: string
+                            const: text
+                          - type: string
+                            const: twitter
+                          - type: string
+                            const: youtube
+                      required:
+                      - label
+                      - question_id
+                      - value
+                      - question_type
+                    - type: object
+                      properties:
+                        label:
+                          type: string
+                        question_id:
+                          type: string
+                        value:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        answer:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                        question_type:
+                          type: string
+                          const: url
+                      required:
+                      - label
+                      - question_id
+                      - value
+                      - question_type
+                skip_payment:
+                  description: Set to true for paid tiers when handling payment externally. Required for paid tiers.
+                  type: boolean
+              required:
+              - email
+              - membership_tier_id
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  membership_id:
+                    type: string
+                  status:
+                    type: string
+                    enum:
+                    - approved
+                    - pending
+                    - approved-pending-payment
+                    - declined
+                required:
+                - membership_id
+                - status
+  /v1/memberships/members/update-status:
+    post:
+      tags:
+      - Memberships
+      summary: Update Member Status
+      description: Update a member's membership status. Approving a paid tier member captures their payment. Declining cancels any active subscription.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: User ID (e.g., 'usr-xxx') or email address
+                status:
+                  type: string
+                  enum:
+                  - approved
+                  - declined
+              required:
+              - user_id
+              - status
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Empty response
+                properties: {}
+                additionalProperties: false
+                x-stainless-empty-object: true
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-luma-api-key
+      description: API key to authenticate requests to the Luma API. Generate an API key on your Luma dashboard.

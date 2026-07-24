@@ -1,0 +1,216 @@
+openapi: 3.1.0
+info:
+  title: Luma Calendars Miscellaneous API
+  version: 1.0.0
+  description: 'API for interacting with Luma''s event platform.
+
+
+    ## Rate Limits
+
+
+    The Luma API uses a per-minute rate limit shared across `GET` and `POST` requests:
+
+
+    - **Calendar API keys** and OAuth tokens: **200 requests/minute** per calendar.
+
+    - **Organization API keys**: **500 requests/minute** per organization.
+
+
+    When you exceed the limit the API returns `429 Too Many Requests`. Back off before retrying.'
+  contact:
+    name: Luma Support
+    url: https://help.luma.com
+  license:
+    name: Proprietary
+servers:
+- url: https://public-api.luma.com
+  description: Production server
+security:
+- apiKeyAuth: []
+tags:
+- name: Miscellaneous
+paths:
+  /v1/users/get-self:
+    get:
+      tags:
+      - Miscellaneous
+      summary: Get Self
+      parameters: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  avatar_url:
+                    type: string
+                  email:
+                    type: string
+                  first_name:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  last_name:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                required:
+                - id
+                - name
+                - avatar_url
+                - email
+                - first_name
+                - last_name
+  /v1/entity/lookup:
+    get:
+      tags:
+      - Miscellaneous
+      summary: Lookup Entity
+      parameters:
+      - name: slug
+        in: query
+        required: true
+        schema:
+          type: string
+      description: Lookup an entity on Luma by it's slug.
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  entity:
+                    anyOf:
+                    - oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            const: calendar
+                          calendar:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              api_id:
+                                type: string
+                                deprecated: true
+                                description: Use `id` instead.
+                              name:
+                                type: string
+                              slug:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              avatar_url:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                            required:
+                            - id
+                            - api_id
+                            - name
+                            - slug
+                        required:
+                        - type
+                        - calendar
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            const: event
+                          event:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              api_id:
+                                type: string
+                                deprecated: true
+                                description: Use `id` instead.
+                              name:
+                                type: string
+                              slug:
+                                type: string
+                              cover_url:
+                                type: string
+                              start_at:
+                                type: string
+                                format: date-time
+                                pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
+                                description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
+                              end_at:
+                                type: string
+                                format: date-time
+                                pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
+                                description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
+                            required:
+                            - id
+                            - api_id
+                            - name
+                            - slug
+                            - cover_url
+                            - start_at
+                            - end_at
+                        required:
+                        - type
+                        - event
+                    - type: 'null'
+                required:
+                - entity
+  /v1/images/create-upload-url:
+    post:
+      tags:
+      - Miscellaneous
+      summary: Create Upload URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              type: object
+              properties:
+                content_type:
+                  anyOf:
+                  - type: string
+                    enum:
+                    - image/jpeg
+                    - image/png
+                  - type: 'null'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  upload_url:
+                    type: string
+                    description: You'll upload your image here using a PUT request.
+                  file_url:
+                    type: string
+                required:
+                - upload_url
+                - file_url
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-luma-api-key
+      description: API key to authenticate requests to the Luma API. Generate an API key on your Luma dashboard.
