@@ -1,6 +1,19 @@
 name: Luma
 description: Modern event hosting platform with REST APIs for creating events, managing ticketing, tracking attendance, and building community around live and virtual events.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/luma.png
 url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -14,36 +27,132 @@ tags:
   - Guests
   - Attendance
 apis:
-  - name: Luma API
-    description: REST API for creating and managing events, calendars, guests, tickets, coupons, tags, contacts, memberships, hosts, and webhooks on the Luma event platform.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.luma.com/reference
-    baseURL: https://public-api.luma.com
-    tags:
-      - Events
-      - Calendars
-      - Guests
-      - Tickets
-      - Webhooks
-      - Coupons
-      - Memberships
-    properties:
-      - type: Documentation
-        url: https://docs.luma.com/reference
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/openapi/openapi.json
-      - type: Authentication
-        url: https://help.luma.com/p/luma-api
-      - type: Plans
-        url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/plans/plans.yml
-      - type: RateLimits
-        url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/rate-limits/rate-limits.yml
-      - type: FinOps
-        url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/finops/finops.yml
-    contact:
-      - FN: Luma Support
-        email: support@lu.ma
-        url: https://help.luma.com/
+- aid: luma:luma-calendars-api
+  name: Luma Calendars API
+  description: The Calendars API from Luma — 25 operation(s) for calendars.
+  humanURL: https://docs.luma.com/reference
+  baseURL: https://public-api.luma.com
+  tags:
+  - Calendars
+  properties:
+  - type: OpenAPI
+    url: openapi/luma-calendars-api-openapi.yml
+  - type: Documentation
+    url: https://docs.luma.com/reference
+  - type: Authentication
+    url: https://help.luma.com/p/luma-api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/finops/finops.yml
+- aid: luma:luma-events-api
+  name: Luma Events API
+  description: The Events API from Luma — 21 operation(s) for events.
+  humanURL: https://docs.luma.com/reference
+  baseURL: https://public-api.luma.com
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/luma-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.luma.com/reference
+  - type: Authentication
+    url: https://help.luma.com/p/luma-api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/finops/finops.yml
+- aid: luma:luma-memberships-api
+  name: Luma Memberships API
+  description: The Memberships API from Luma — 3 operation(s) for memberships.
+  humanURL: https://docs.luma.com/reference
+  baseURL: https://public-api.luma.com
+  tags:
+  - Memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/luma-memberships-api-openapi.yml
+  - type: Documentation
+    url: https://docs.luma.com/reference
+  - type: Authentication
+    url: https://help.luma.com/p/luma-api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/finops/finops.yml
+- aid: luma:luma-miscellaneous-api
+  name: Luma Miscellaneous API
+  description: The Miscellaneous API from Luma — 3 operation(s) for miscellaneous.
+  humanURL: https://docs.luma.com/reference
+  baseURL: https://public-api.luma.com
+  tags:
+  - Miscellaneous
+  properties:
+  - type: OpenAPI
+    url: openapi/luma-miscellaneous-api-openapi.yml
+  - type: Documentation
+    url: https://docs.luma.com/reference
+  - type: Authentication
+    url: https://help.luma.com/p/luma-api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/finops/finops.yml
+- aid: luma:luma-organizations-api
+  name: Luma Organizations API
+  description: The Organizations API from Luma — 5 operation(s) for organizations.
+  humanURL: https://docs.luma.com/reference
+  baseURL: https://public-api.luma.com
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/luma-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.luma.com/reference
+  - type: Authentication
+    url: https://help.luma.com/p/luma-api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/finops/finops.yml
+- aid: luma:luma-webhooks-api
+  name: Luma Webhooks API
+  description: The Webhooks API from Luma — 5 operation(s) for webhooks.
+  humanURL: https://docs.luma.com/reference
+  baseURL: https://public-api.luma.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/luma-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.luma.com/reference
+  - type: Authentication
+    url: https://help.luma.com/p/luma-api
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/plans/plans.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/rate-limits/rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/finops/finops.yml
 common:
   - type: AgenticAccess
     url: agentic-access/luma-agentic-access.yml
