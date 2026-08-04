@@ -1,0 +1,24 @@
+{
+  "provider": "luma",
+  "sources": [
+    "luma-calendars-api-openapi.yml",
+    "luma-events-api-openapi.yml",
+    "luma-memberships-api-openapi.yml",
+    "luma-miscellaneous-api-openapi.yml",
+    "luma-organizations-api-openapi.yml",
+    "luma-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "luma-calendars-api-openapi.yml",
+    "luma-events-api-openapi.yml",
+    "luma-memberships-api-openapi.yml",
+    "luma-miscellaneous-api-openapi.yml",
+    "luma-organizations-api-openapi.yml",
+    "luma-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
