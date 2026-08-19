@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Luma Calendars Organizations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-luma-api-key",
+      "value": "{{x-luma-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Organization Admins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/organizations/admins/list"
+          },
+          "docs": "List all admins for the organization."
+        },
+        {
+          "info": {
+            "name": "List Organization Calendars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/organizations/calendars/list",
+            "params": [
+              {
+                "name": "pagination_cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value of `next_cursor` from a previous request."
+              },
+              {
+                "name": "pagination_limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return. The server will enforce a maximum number."
+              }
+            ]
+          },
+          "docs": "List all calendars belonging to the organization."
+        },
+        {
+          "info": {
+            "name": "List Organization Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/organizations/events/list",
+            "params": [
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+              },
+              {
+                "name": "pagination_cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value of `next_cursor` from a previous request."
+              },
+              {
+                "name": "pagination_limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return. The server will enforce a maximum number."
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all events across all calendars belonging to the organization. Events are deduplicated if they appear on multiple calendars within the organization."
+        },
+        {
+          "info": {
+            "name": "Create Calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v2/organizations/calendars/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new calendar within the organization. The calendar will be managed by the API key owner."
+        },
+        {
+          "info": {
+            "name": "Transfer Event Calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/organizations/events/transfer-calendar",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Transfer an event from its current managing calendar to a different calendar within the organization. The event's managing calendar changes to the destination calendar. Both the source and destination calendars must belong to the organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

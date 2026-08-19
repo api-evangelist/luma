@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Luma Calendars Memberships API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-luma-api-key",
+      "value": "{{x-luma-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Memberships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Membership Tiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/memberships/tiers/list",
+            "params": [
+              {
+                "name": "pagination_cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value of `next_cursor` from a previous request."
+              },
+              {
+                "name": "pagination_limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return. The server will enforce a maximum number."
+              }
+            ]
+          },
+          "docs": "List available membership tiers for the calendar."
+        },
+        {
+          "info": {
+            "name": "Add Member to Tier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/memberships/members/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a user to a membership tier. For paid tiers, set skip_payment to true if you are handling payment externally."
+        },
+        {
+          "info": {
+            "name": "Update Member Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/memberships/members/update-status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a member's membership status. Approving a paid tier member captures their payment. Declining cancels any active subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

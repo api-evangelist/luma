@@ -1,0 +1,416 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Luma Calendars Events API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-luma-api-key",
+      "value": "{{x-luma-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/events/get",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query",
+                "description": "Event ID, this usually starts with evt-"
+              }
+            ]
+          },
+          "docs": "Return admin information about an event that you have manage access for."
+        },
+        {
+          "info": {
+            "name": "Get Guest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/events/guests/get",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query",
+                "description": "Event ID, this usually starts with evt-"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Guest identifier — the guest ID (gst-), a ticket key, a guest key (g-), or the user's email."
+              }
+            ]
+          },
+          "docs": "Get detailed information for an event guest by looking them up by their ID. This supports looking them up by different parameters.\n\nThis response includes `event_ticket_orders`, which includes `coupon_info` when a coupon was applied."
+        },
+        {
+          "info": {
+            "name": "List Guests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/events/guests/list",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query",
+                "description": "Event ID, this usually starts with evt-"
+              },
+              {
+                "name": "approval_status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination_cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value of `next_cursor` from a previous request."
+              },
+              {
+                "name": "pagination_limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return. The server will enforce a maximum number."
+              },
+              {
+                "name": "sort_column",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get list of guests who have registered or been invited to an event.\n\nThis list response includes guest summaries and `event_tickets`, but not order-level details like `event_ticket_orders`. Use `/v1/events/guests/get` when you need detailed ticket order data for a specific guest."
+        },
+        {
+          "info": {
+            "name": "List Event Coupons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/events/coupons/list",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query",
+                "description": "Event ID, this usually starts with evt-"
+              },
+              {
+                "name": "pagination_cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value of `next_cursor` from a previous request."
+              },
+              {
+                "name": "pagination_limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return. The server will enforce a maximum number."
+              }
+            ]
+          },
+          "docs": "List all coupons that have been created for an event."
+        },
+        {
+          "info": {
+            "name": "List Ticket Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/events/ticket-types/list",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query",
+                "description": "Event ID, this usually starts with evt-"
+              },
+              {
+                "name": "include_hidden",
+                "value": "",
+                "type": "query",
+                "description": "Include hidden ticket types"
+              }
+            ]
+          },
+          "docs": "List all ticket types for an event"
+        },
+        {
+          "info": {
+            "name": "Get Ticket Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/events/ticket-types/get",
+            "params": [
+              {
+                "name": "event_ticket_type_id",
+                "value": "",
+                "type": "query",
+                "description": "Ticket type ID, this usually starts with ttype-"
+              }
+            ]
+          },
+          "docs": "Get a single ticket type by ID"
+        },
+        {
+          "info": {
+            "name": "Create Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Event"
+        },
+        {
+          "info": {
+            "name": "Update Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Event"
+        },
+        {
+          "info": {
+            "name": "Update Guest Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/guests/update-status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a guest’s status. Set `status` to `approved` (\"Going\"), `declined`, `pending_approval`, or `waitlist`. Use `should_refund` to refund a paid guest when moving them out of an approved state. Use `message` to include a personal note in the email we send the guest. To send a soft invite that guests can accept, use `/v1/events/guests/send-invites` instead."
+        },
+        {
+          "info": {
+            "name": "Send Invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/guests/send-invites",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send guests an invite to an event. We'll send an email, and if their phone number is linked to their Luma account, they'll also receive an SMS."
+        },
+        {
+          "info": {
+            "name": "Add Guests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/guests/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add guests to the event. By default, guests are added with the status \"Going\" (approved) and receive one ticket of the default ticket type. Use the `ticket` or `tickets` parameter to specify custom ticket assignments. Get available ticket types using `/v1/events/ticket-types/list`. Use `approval_status` to add guests as pending approval or on the waitlist instead of immediately approved."
+        },
+        {
+          "info": {
+            "name": "Add Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/hosts/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a host to an event. This works for both managers and check-in staff — use the access_level parameter to control permissions."
+        },
+        {
+          "info": {
+            "name": "Update Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/hosts/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a host's permissions or visibility on an event. Use this to change a host between check-in and manager access levels. The event creator's access level cannot be changed."
+        },
+        {
+          "info": {
+            "name": "Remove Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/hosts/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a host from an event. The event creator cannot be removed."
+        },
+        {
+          "info": {
+            "name": "Create Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/coupons/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a coupon that can be applied when a guest is registering for an event. Restrict it to a ticket type with `event_ticket_type_id` — when that ticket type is hidden, this creates an unlock (access) code. You are not able to edit the coupon terms after it has been created."
+        },
+        {
+          "info": {
+            "name": "Update Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/coupons/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Coupon"
+        },
+        {
+          "info": {
+            "name": "Create Ticket Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/ticket-types/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new ticket type for an event"
+        },
+        {
+          "info": {
+            "name": "Update Ticket Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/ticket-types/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing ticket type configuration"
+        },
+        {
+          "info": {
+            "name": "Delete Ticket Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/ticket-types/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Soft delete a ticket type. Cannot delete if tickets have been sold or if it's the last visible ticket type."
+        },
+        {
+          "info": {
+            "name": "Request Event Cancellation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/cancel/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request a cancellation token for an event. Canceling an event is irreversible — it notifies all guests, processes refunds, and permanently deletes the event. Because of this, cancellation uses a two-step flow: first request a token here, then pass it to /events/cancel to execute. The token expires after 15 minutes."
+        },
+        {
+          "info": {
+            "name": "Cancel Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/events/cancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an event. You must first call /events/cancel/request to get a cancellation_token, then pass it here. This is irreversible — the event will be deleted, all guests will be notified, and refunds will be processed if should_refund is true. For paid events, you must specify should_refund."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

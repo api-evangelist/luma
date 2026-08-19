@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Luma Calendars Webhooks API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-luma-api-key",
+      "value": "{{x-luma-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/webhooks/list",
+            "params": [
+              {
+                "name": "pagination_cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value of `next_cursor` from a previous request."
+              },
+              {
+                "name": "pagination_limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return. The server will enforce a maximum number."
+              }
+            ]
+          },
+          "docs": "List all webhook endpoints for the calendar."
+        },
+        {
+          "info": {
+            "name": "Get Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v2/webhooks/get",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get details about a specific webhook endpoint."
+        },
+        {
+          "info": {
+            "name": "Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v2/webhooks/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new webhook endpoint to receive event notifications."
+        },
+        {
+          "info": {
+            "name": "Update Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v2/webhooks/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a webhook endpoint's event types or status (active/paused)."
+        },
+        {
+          "info": {
+            "name": "Delete Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/webhooks/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a webhook endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

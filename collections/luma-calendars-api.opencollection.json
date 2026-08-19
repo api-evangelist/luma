@@ -1,0 +1,502 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Luma Calendars API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-luma-api-key",
+      "value": "{{x-luma-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Calendars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/calendars/get"
+          },
+          "docs": "Get information about the calendar."
+        },
+        {
+          "info": {
+            "name": "List Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/calendars/events/list",
+            "params": [
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z"
+              },
+              {
+                "name": "pagination_cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value of `next_cursor` from a previous request."
+              },
+              {
+                "name": "pagination_limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return. The server will enforce a maximum number."
+              },
+              {
+                "name": "platforms",
+                "value": "",
+                "type": "query",
+                "description": "Which event platforms to include. Defaults to `luma` for backwards compatibility. Pass as repeated query params, e.g. `?platforms=luma&platforms=external`."
+              },
+              {
+                "name": "sort_column",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by calendar submission status. Defaults to `approved`."
+              }
+            ]
+          },
+          "docs": "Every event and API key on Luma is managed by a [Luma Calendar](https://help.luma.com/p/luma-calendar-overview). You can list all of the events managed by your Calendar by using this API route.\n\nNote that this API route will not list events that are listed on the Calendar but not managed by the Calendar."
+        },
+        {
+          "info": {
+            "name": "List Contact Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/calendars/contact-tags/list"
+          },
+          "docs": "List Contact Tags"
+        },
+        {
+          "info": {
+            "name": "List Event Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/calendars/event-tags/list"
+          },
+          "docs": "List Event Tags"
+        },
+        {
+          "info": {
+            "name": "List Calendar Admins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/calendar/admins/list"
+          },
+          "docs": "List all admins for the calendar."
+        },
+        {
+          "info": {
+            "name": "Lookup Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/calendar/lookup-event",
+            "params": [
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "url",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query",
+                "description": "Event ID, this usually starts with evt-"
+              },
+              {
+                "name": "event_api_id",
+                "value": "",
+                "type": "query",
+                "description": "Use `event_id` instead."
+              }
+            ]
+          },
+          "docs": "See if an event already exists on the calendar. This is useful when figuring out if you want to submit an event to the calendar."
+        },
+        {
+          "info": {
+            "name": "List Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/calendars/contacts/list",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search over names and emails."
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Tag names or tag IDs to filter contacts. Pass as repeated query params, e.g. `?tags=vip&tags=sponsor`. Returns contacts who have any of the specified tags."
+              },
+              {
+                "name": "calendar_membership_tier_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "membership_status",
+                "value": "",
+                "type": "query",
+                "description": "This is relevant for Calendar Memberships but not relevant otherwise."
+              },
+              {
+                "name": "pagination_cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value of `next_cursor` from a previous request."
+              },
+              {
+                "name": "pagination_limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return. The server will enforce a maximum number."
+              },
+              {
+                "name": "sort_column",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Contacts"
+        },
+        {
+          "info": {
+            "name": "List Calendar Coupons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.luma.com/v1/calendars/coupons/list",
+            "params": [
+              {
+                "name": "pagination_cursor",
+                "value": "",
+                "type": "query",
+                "description": "Value of `next_cursor` from a previous request."
+              },
+              {
+                "name": "pagination_limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to return. The server will enforce a maximum number."
+              }
+            ]
+          },
+          "docs": "List all coupons that have been created for a calendar."
+        },
+        {
+          "info": {
+            "name": "Create Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/coupons/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a coupon that can be applied to any event that is managed by the calendar. Be careful not to have the same code on an event and on the calendar."
+        },
+        {
+          "info": {
+            "name": "Update Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/coupons/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Coupon"
+        },
+        {
+          "info": {
+            "name": "Import Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/contacts/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import contacts to your calendar to easily invite them to events and send them newsletters."
+        },
+        {
+          "info": {
+            "name": "Create Contact Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/contact-tags/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Contact Tag"
+        },
+        {
+          "info": {
+            "name": "Update Contact Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/contact-tags/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Contact Tag"
+        },
+        {
+          "info": {
+            "name": "Delete Contact Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/contact-tags/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Contact Tag"
+        },
+        {
+          "info": {
+            "name": "Apply Contact Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/contact-tags/apply",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply a tag to existing calendar contacts. This will not create new contacts."
+        },
+        {
+          "info": {
+            "name": "Unapply Contact Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/contact-tags/unapply",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unapply a tag from calendar contacts. Only affects existing contacts."
+        },
+        {
+          "info": {
+            "name": "Create Event Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/event-tags/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Event Tag"
+        },
+        {
+          "info": {
+            "name": "Update Event Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/event-tags/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Event Tag"
+        },
+        {
+          "info": {
+            "name": "Delete Event Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/event-tags/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Event Tag"
+        },
+        {
+          "info": {
+            "name": "Apply Event Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/event-tags/apply",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply a tag to events on the calendar."
+        },
+        {
+          "info": {
+            "name": "Unapply Event Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/event-tags/unapply",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unapply a tag from events on the calendar."
+        },
+        {
+          "info": {
+            "name": "Add Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendar/add-event",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add or submit an existing event (on Luma or on an external platform) to the Luma calendar. By default, events added by a calendar manager are approved immediately. Use `submission_mode: \"pending\"` to keep the submission pending.\n\nOn calendars with `require-manage-access`, submitting a Luma event you manage can also grant the target calendar manage access once the submission is approved."
+        },
+        {
+          "info": {
+            "name": "Approve Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendar/approve-event",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve a pending event submission on your calendar. The event becomes visible on the calendar and the submitter is notified."
+        },
+        {
+          "info": {
+            "name": "Reject Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendar/reject-event",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reject a pending event submission on your calendar. If the event is still pending, the submitter is notified."
+        },
+        {
+          "info": {
+            "name": "Update Calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.luma.com/v1/calendars/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a calendar's settings. Only the provided fields are changed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
