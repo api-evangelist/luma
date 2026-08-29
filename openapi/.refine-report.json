@@ -1,12 +1,7 @@
 {
   "provider": "luma",
   "sources": [
-    "luma-calendars-api-openapi.yml",
-    "luma-events-api-openapi.yml",
-    "luma-memberships-api-openapi.yml",
-    "luma-miscellaneous-api-openapi.yml",
-    "luma-organizations-api-openapi.yml",
-    "luma-webhooks-api-openapi.yml"
+    "_original/openapi.json"
   ],
   "outputs": [
     "luma-calendars-api-openapi.yml",
@@ -14,11 +9,22 @@
     "luma-memberships-api-openapi.yml",
     "luma-miscellaneous-api-openapi.yml",
     "luma-organizations-api-openapi.yml",
+    "luma-webhook-types-api-openapi.yml",
     "luma-webhooks-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "luma-calendars-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "luma-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "luma-memberships-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "luma-miscellaneous-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "luma-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "luma-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

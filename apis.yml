@@ -180,6 +180,16 @@ apis:
       https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/rate-limits/rate-limits.yml
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/finops/finops.yml
+- aid: luma:luma-webhook-types-api
+  name: Luma Webhook Types API
+  description: The Webhook Types API from Luma — 0 operation(s) for webhook types.
+  humanURL: https://docs.luma.com/reference
+  baseURL: https://public-api.luma.com
+  tags:
+  - Webhook Types
+  properties:
+  - type: OpenAPI
+    url: openapi/luma-webhook-types-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/luma-agentic-access.yml
