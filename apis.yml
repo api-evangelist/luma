@@ -1,5 +1,17 @@
 name: Luma
 description: Modern event hosting platform with REST APIs for creating events, managing ticketing, tracking attendance, and building community around live and virtual events.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
