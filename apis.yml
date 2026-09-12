@@ -192,6 +192,8 @@ apis:
   - type: OpenAPI
     url: openapi/luma-webhook-types-api-openapi.yml
 common:
+  - type: Website
+    url: https://www.luma.com/
   - type: AgenticAccess
     url: agentic-access/luma-agentic-access.yml
   - type: VulnerabilityDisclosure
