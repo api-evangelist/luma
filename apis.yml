@@ -36,7 +36,7 @@ tags:
   - Event Management
   - Ticketing
   - Community
-  - Calendars
+  - Calendar
   - Guests
   - Attendance
 tags_raw:
@@ -54,6 +54,8 @@ apis:
   humanURL: https://docs.luma.com/reference
   baseURL: https://public-api.luma.com
   tags:
+  - Calendar
+  tags_raw:
   - Calendars
   properties:
   - type: OpenAPI
@@ -98,6 +100,8 @@ apis:
   humanURL: https://docs.luma.com/reference
   baseURL: https://public-api.luma.com
   tags:
+  - Membership
+  tags_raw:
   - Memberships
   properties:
   - type: OpenAPI
