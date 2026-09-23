@@ -441,6 +441,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1MembershipsTiersList
+      x-operation-id-source: derived
   /v1/memberships/members/add:
     post:
       tags:
@@ -702,6 +704,8 @@ paths:
                 required:
                 - membership_id
                 - status
+      operationId: postV1MembershipsMembersAdd
+      x-operation-id-source: derived
   /v1/memberships/members/update-status:
     post:
       tags:
@@ -738,6 +742,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1MembershipsMembersUpdateStatus
+      x-operation-id-source: derived
 components:
   securitySchemes:
     apiKeyAuth:

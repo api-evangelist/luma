@@ -152,6 +152,8 @@ paths:
                 - twitter_handle
                 - youtube_handle
                 - website
+      operationId: getV1CalendarsGet
+      x-operation-id-source: derived
   /v1/calendars/events/list:
     get:
       tags:
@@ -229,7 +231,7 @@ paths:
           - approved
           - pending
         description: Filter by calendar submission status. Defaults to `approved`.
-      description: 'Every event and API key on Luma is managed by a [Luma Calendar](https://help.luma.com/p/luma-calendar-overview). You can list all of the events managed by your Calendar by using this API route.
+      description: 'Every event and API key on Luma is managed by a Luma Calendar. You can list all of the events managed by your Calendar by using this API route.
 
 
         Note that this API route will not list events that are listed on the Calendar but not managed by the Calendar.'
@@ -854,6 +856,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1CalendarsEventsList
+      x-operation-id-source: derived
   /v1/calendars/contact-tags/list:
     get:
       tags:
@@ -889,6 +893,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1CalendarsContactTagsList
+      x-operation-id-source: derived
   /v1/calendars/event-tags/list:
     get:
       tags:
@@ -924,6 +930,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1CalendarsEventTagsList
+      x-operation-id-source: derived
   /v1/calendar/admins/list:
     get:
       tags:
@@ -977,6 +985,8 @@ paths:
                       - api_id
                 required:
                 - entries
+      operationId: getV1CalendarAdminsList
+      x-operation-id-source: derived
   /v1/calendar/lookup-event:
     get:
       tags:
@@ -1044,6 +1054,8 @@ paths:
                     - type: 'null'
                 required:
                 - event
+      operationId: getV1CalendarLookupEvent
+      x-operation-id-source: derived
   /v1/calendars/contacts/list:
     get:
       tags:
@@ -1223,6 +1235,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1CalendarsContactsList
+      x-operation-id-source: derived
   /v1/calendars/coupons/list:
     get:
       tags:
@@ -1457,6 +1471,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1CalendarsCouponsList
+      x-operation-id-source: derived
   /v1/calendars/coupons/create:
     post:
       tags:
@@ -1870,6 +1886,8 @@ paths:
                 - percent_off
                 - cents_off
                 - currency
+      operationId: postV1CalendarsCouponsCreate
+      x-operation-id-source: derived
   /v1/calendars/coupons/update:
     post:
       tags:
@@ -1916,6 +1934,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1CalendarsCouponsUpdate
+      x-operation-id-source: derived
   /v1/calendars/contacts/import:
     post:
       tags:
@@ -1964,6 +1984,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1CalendarsContactsImport
+      x-operation-id-source: derived
   /v1/calendars/contact-tags/create:
     post:
       tags:
@@ -2008,6 +2030,8 @@ paths:
                     description: Tag ID, this usually starts with tag-
                 required:
                 - id
+      operationId: postV1CalendarsContactTagsCreate
+      x-operation-id-source: derived
   /v1/calendars/contact-tags/update:
     post:
       tags:
@@ -2050,6 +2074,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1CalendarsContactTagsUpdate
+      x-operation-id-source: derived
   /v1/calendars/contact-tags/delete:
     post:
       tags:
@@ -2079,6 +2105,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1CalendarsContactTagsDelete
+      x-operation-id-source: derived
   /v1/calendars/contact-tags/apply:
     post:
       tags:
@@ -2126,6 +2154,8 @@ paths:
                 required:
                 - applied_count
                 - skipped_count
+      operationId: postV1CalendarsContactTagsApply
+      x-operation-id-source: derived
   /v1/calendars/contact-tags/unapply:
     post:
       tags:
@@ -2173,6 +2203,8 @@ paths:
                 required:
                 - removed_count
                 - skipped_count
+      operationId: postV1CalendarsContactTagsUnapply
+      x-operation-id-source: derived
   /v1/calendars/event-tags/create:
     post:
       tags:
@@ -2217,6 +2249,8 @@ paths:
                     description: Tag ID, this usually starts with tag-
                 required:
                 - id
+      operationId: postV1CalendarsEventTagsCreate
+      x-operation-id-source: derived
   /v1/calendars/event-tags/update:
     post:
       tags:
@@ -2259,6 +2293,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1CalendarsEventTagsUpdate
+      x-operation-id-source: derived
   /v1/calendars/event-tags/delete:
     post:
       tags:
@@ -2288,6 +2324,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1CalendarsEventTagsDelete
+      x-operation-id-source: derived
   /v1/calendars/event-tags/apply:
     post:
       tags:
@@ -2332,6 +2370,8 @@ paths:
                 required:
                 - applied_count
                 - skipped_count
+      operationId: postV1CalendarsEventTagsApply
+      x-operation-id-source: derived
   /v1/calendars/event-tags/unapply:
     post:
       tags:
@@ -2376,6 +2416,8 @@ paths:
                 required:
                 - removed_count
                 - skipped_count
+      operationId: postV1CalendarsEventTagsUnapply
+      x-operation-id-source: derived
   /v1/calendar/add-event:
     post:
       tags:
@@ -2522,6 +2564,8 @@ paths:
                 - id
                 - api_id
                 - status
+      operationId: postV1CalendarAddEvent
+      x-operation-id-source: derived
   /v1/calendar/approve-event:
     post:
       tags:
@@ -2552,6 +2596,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1CalendarApproveEvent
+      x-operation-id-source: derived
   /v1/calendar/reject-event:
     post:
       tags:
@@ -2585,6 +2631,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1CalendarRejectEvent
+      x-operation-id-source: derived
   /v1/calendars/update:
     post:
       tags:
@@ -2735,6 +2783,8 @@ paths:
                 - twitter_handle
                 - youtube_handle
                 - website
+      operationId: postV1CalendarsUpdate
+      x-operation-id-source: derived
 components:
   securitySchemes:
     apiKeyAuth:

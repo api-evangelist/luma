@@ -70,6 +70,8 @@ paths:
                 - email
                 - first_name
                 - last_name
+      operationId: getV1UsersGetSelf
+      x-operation-id-source: derived
   /v1/entity/lookup:
     get:
       tags:
@@ -170,6 +172,8 @@ paths:
                     - type: 'null'
                 required:
                 - entity
+      operationId: getV1EntityLookup
+      x-operation-id-source: derived
   /v1/images/create-upload-url:
     post:
       tags:
@@ -207,6 +211,8 @@ paths:
                 required:
                 - upload_url
                 - file_url
+      operationId: postV1ImagesCreateUploadUrl
+      x-operation-id-source: derived
 components:
   securitySchemes:
     apiKeyAuth:

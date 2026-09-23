@@ -553,6 +553,8 @@ paths:
                 - waitlist_status
                 - feedback_email
                 - hosts
+      operationId: getV1EventsGet
+      x-operation-id-source: derived
   /v1/events/guests/get:
     get:
       tags:
@@ -1418,6 +1420,8 @@ paths:
                 - utm_source
                 - event_tickets
                 - event_ticket_orders
+      operationId: getV1EventsGuestsGet
+      x-operation-id-source: derived
   /v1/events/guests/list:
     get:
       tags:
@@ -1992,6 +1996,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1EventsGuestsList
+      x-operation-id-source: derived
   /v1/events/coupons/list:
     get:
       tags:
@@ -2233,6 +2239,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1EventsCouponsList
+      x-operation-id-source: derived
   /v1/events/ticket-types/list:
     get:
       tags:
@@ -2319,6 +2327,8 @@ paths:
                       - id
                 required:
                 - entries
+      operationId: getV1EventsTicketTypesList
+      x-operation-id-source: derived
   /v1/events/ticket-types/get:
     get:
       tags:
@@ -2391,6 +2401,8 @@ paths:
                 - name
                 - type
                 - id
+      operationId: getV1EventsTicketTypesGet
+      x-operation-id-source: derived
   /v1/events/create:
     post:
       tags:
@@ -2840,6 +2852,8 @@ paths:
                     type: string
                 required:
                 - id
+      operationId: postV1EventsCreate
+      x-operation-id-source: derived
   /v1/events/update:
     post:
       tags:
@@ -3291,6 +3305,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsUpdate
+      x-operation-id-source: derived
   /v1/events/guests/update-status:
     post:
       tags:
@@ -3347,6 +3363,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsGuestsUpdateStatus
+      x-operation-id-source: derived
   /v1/events/guests/send-invites:
     post:
       tags:
@@ -3398,6 +3416,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsGuestsSendInvites
+      x-operation-id-source: derived
   /v1/events/guests/add:
     post:
       tags:
@@ -3479,6 +3499,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsGuestsAdd
+      x-operation-id-source: derived
   /v1/events/hosts/add:
     post:
       tags:
@@ -3527,6 +3549,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsHostsAdd
+      x-operation-id-source: derived
   /v1/events/hosts/update:
     post:
       tags:
@@ -3571,6 +3595,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsHostsUpdate
+      x-operation-id-source: derived
   /v1/events/hosts/remove:
     post:
       tags:
@@ -3605,6 +3631,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsHostsRemove
+      x-operation-id-source: derived
   /v1/events/coupons/create:
     post:
       tags:
@@ -4025,6 +4053,8 @@ paths:
                 - percent_off
                 - cents_off
                 - currency
+      operationId: postV1EventsCouponsCreate
+      x-operation-id-source: derived
   /v1/events/coupons/update:
     post:
       tags:
@@ -4075,6 +4105,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsCouponsUpdate
+      x-operation-id-source: derived
   /v1/events/ticket-types/create:
     post:
       tags:
@@ -4201,6 +4233,8 @@ paths:
                 - name
                 - type
                 - id
+      operationId: postV1EventsTicketTypesCreate
+      x-operation-id-source: derived
   /v1/events/ticket-types/update:
     post:
       tags:
@@ -4324,6 +4358,8 @@ paths:
                 - name
                 - type
                 - id
+      operationId: postV1EventsTicketTypesUpdate
+      x-operation-id-source: derived
   /v1/events/ticket-types/delete:
     post:
       tags:
@@ -4354,6 +4390,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsTicketTypesDelete
+      x-operation-id-source: derived
   /v1/events/cancel/request:
     post:
       tags:
@@ -4395,6 +4433,8 @@ paths:
                 - cancellation_token
                 - is_paid
                 - guest_count
+      operationId: postV1EventsCancelRequest
+      x-operation-id-source: derived
   /v1/events/cancel:
     post:
       tags:
@@ -4432,6 +4472,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1EventsCancel
+      x-operation-id-source: derived
 components:
   securitySchemes:
     apiKeyAuth:

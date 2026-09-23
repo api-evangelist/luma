@@ -83,6 +83,8 @@ paths:
                       - api_id
                 required:
                 - entries
+      operationId: getV1OrganizationsAdminsList
+      x-operation-id-source: derived
   /v1/organizations/calendars/list:
     get:
       tags:
@@ -231,6 +233,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1OrganizationsCalendarsList
+      x-operation-id-source: derived
   /v1/organizations/events/list:
     get:
       tags:
@@ -926,6 +930,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1OrganizationsEventsList
+      x-operation-id-source: derived
   /v2/organizations/calendars/create:
     post:
       tags:
@@ -1073,6 +1079,8 @@ paths:
                 - twitter_handle
                 - youtube_handle
                 - website
+      operationId: postV2OrganizationsCalendarsCreate
+      x-operation-id-source: derived
   /v1/organizations/events/transfer-calendar:
     post:
       tags:
@@ -1107,6 +1115,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1OrganizationsEventsTransferCalendar
+      x-operation-id-source: derived
 components:
   securitySchemes:
     apiKeyAuth:

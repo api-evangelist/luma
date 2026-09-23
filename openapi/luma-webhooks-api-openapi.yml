@@ -109,6 +109,8 @@ paths:
                 required:
                 - entries
                 - has_more
+      operationId: getV1WebhooksList
+      x-operation-id-source: derived
   /v2/webhooks/get:
     get:
       tags:
@@ -167,6 +169,8 @@ paths:
                 - status
                 - secret
                 - created_at
+      operationId: getV2WebhooksGet
+      x-operation-id-source: derived
   /v2/webhooks/create:
     post:
       tags:
@@ -249,6 +253,8 @@ paths:
                 - status
                 - secret
                 - created_at
+      operationId: postV2WebhooksCreate
+      x-operation-id-source: derived
   /v2/webhooks/update:
     post:
       tags:
@@ -333,6 +339,8 @@ paths:
                 - status
                 - secret
                 - created_at
+      operationId: postV2WebhooksUpdate
+      x-operation-id-source: derived
   /v1/webhooks/delete:
     post:
       tags:
@@ -362,6 +370,8 @@ paths:
                 properties: {}
                 additionalProperties: false
                 x-stainless-empty-object: true
+      operationId: postV1WebhooksDelete
+      x-operation-id-source: derived
 components:
   securitySchemes:
     apiKeyAuth:
