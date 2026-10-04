@@ -31,6 +31,9 @@ url: https://raw.githubusercontent.com/api-evangelist/luma/refs/heads/main/apis.
 created: '2026-06-13'
 modified: '2026-06-13'
 specificationVersion: '0.23'
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
   - Event
   - Event Management
@@ -196,6 +199,9 @@ apis:
   - type: OpenAPI
     url: openapi/luma-webhook-types-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/luma-capability-edges.yml
+    name: Luma Business Capability Map
   - type: Website
     url: https://www.luma.com/
   - type: AgenticAccess
