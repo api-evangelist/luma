@@ -1,0 +1,26 @@
+slug: luma
+provider: Luma
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Webhooks
+  spec_file: luma-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.72
+  evidence: POST /v2/webhooks/create  Create Webhook; POST /v2/webhooks/update  Update Webhook; POST /v1/webhooks/delete  Delete
+    Webhook
+  reason: Full CRUD lifecycle over outbound webhook subscriptions exposed to integrating developers, which
+    matches 'Webhook & Event Subscription Management' explicitly. Confidence tempered because webhook
+    endpoints are often mere integration plumbing rather than a managed ecosystem capability.
