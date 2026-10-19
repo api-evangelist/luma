@@ -42,37 +42,10 @@ paths:
           content:
             application/json:
               schema:
-                $schema: https://json-schema.org/draft/2020-12/schema
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  avatar_url:
-                    type: string
-                  email:
-                    type: string
-                  first_name:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  last_name:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                required:
-                - id
-                - name
-                - avatar_url
-                - email
-                - first_name
-                - last_name
+                $ref: '#/components/schemas/User'
       operationId: getV1UsersGetSelf
       x-operation-id-source: derived
-  /v1/entity/lookup:
+  /v1/entities/lookup:
     get:
       tags:
       - Miscellaneous
@@ -83,7 +56,7 @@ paths:
         required: true
         schema:
           type: string
-      description: Lookup an entity on Luma by it's slug.
+      description: Look up an event or calendar by its slug, Luma URL, or permanent public path such as `event/evt-...`, `e/evt-...`, or `calendar/cal-...`. URL query parameters and fragments are ignored.
       responses:
         '200':
           description: Successful response.
@@ -95,84 +68,94 @@ paths:
                 properties:
                   entity:
                     anyOf:
-                    - oneOf:
-                      - type: object
-                        properties:
-                          type:
-                            type: string
-                            const: calendar
-                          calendar:
-                            type: object
-                            properties:
-                              id:
-                                type: string
-                              api_id:
-                                type: string
-                                deprecated: true
-                                description: Use `id` instead.
-                              name:
-                                type: string
-                              slug:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                              avatar_url:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                            required:
-                            - id
-                            - api_id
-                            - name
-                            - slug
-                        required:
-                        - type
-                        - calendar
-                      - type: object
-                        properties:
-                          type:
-                            type: string
-                            const: event
-                          event:
-                            type: object
-                            properties:
-                              id:
-                                type: string
-                              api_id:
-                                type: string
-                                deprecated: true
-                                description: Use `id` instead.
-                              name:
-                                type: string
-                              slug:
-                                type: string
-                              cover_url:
-                                type: string
-                              start_at:
-                                type: string
-                                format: date-time
-                                pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
-                                description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
-                              end_at:
-                                type: string
-                                format: date-time
-                                pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
-                                description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
-                            required:
-                            - id
-                            - api_id
-                            - name
-                            - slug
-                            - cover_url
-                            - start_at
-                            - end_at
-                        required:
-                        - type
-                        - event
+                    - $ref: '#/components/schemas/Entity'
                     - type: 'null'
                 required:
                 - entity
-      operationId: getV1EntityLookup
+      operationId: getV1EntitiesLookup
+      x-operation-id-source: derived
+  /v1/places/search:
+    get:
+      tags:
+      - Miscellaneous
+      summary: Search Places
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          description: Address or place name, e.g. "120 W 41st St, New York".
+        description: Address or place name, e.g. "120 W 41st St, New York".
+      description: 'Search Google Maps for a place and get up to 5 candidates. Pass the chosen `place_id` as `geo_address_json: { type: "google", place_id }` when creating or updating an event.'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PlaceSearchResult'
+                required:
+                - entries
+      operationId: getV1PlacesSearch
+      x-operation-id-source: derived
+  /v1/images/search:
+    get:
+      tags:
+      - Miscellaneous
+      summary: Search Cover Images
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          description: Keywords to match against image descriptions and tags, e.g. "dinner party".
+        description: Keywords to match against image descriptions and tags, e.g. "dinner party".
+      - name: pagination_cursor
+        in: query
+        required: false
+        schema:
+          description: Value of `next_cursor` from a previous request.
+          type: string
+        description: Value of `next_cursor` from a previous request.
+      - name: pagination_limit
+        in: query
+        required: false
+        schema:
+          description: The number of items to return. The server will enforce a maximum number.
+          type: number
+        description: The number of items to return. The server will enforce a maximum number.
+      description: Search Luma’s gallery of stock event cover images by keyword. Pass the chosen `image_url` as `cover_url` when creating or updating an event — gallery images don’t need to be uploaded first.
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CoverImage'
+                  has_more:
+                    type: boolean
+                  next_cursor:
+                    type: string
+                required:
+                - entries
+                - has_more
+      operationId: getV1ImagesSearch
       x-operation-id-source: derived
   /v1/images/create-upload-url:
     post:
@@ -214,6 +197,158 @@ paths:
       operationId: postV1ImagesCreateUploadUrl
       x-operation-id-source: derived
 components:
+  schemas:
+    CoverImage:
+      type: object
+      properties:
+        id:
+          type: string
+        image_url:
+          type: string
+          description: Pass this as `cover_url` when creating or updating an event.
+        description:
+          type:
+          - string
+          - 'null'
+        tags:
+          type: array
+          items:
+            type: string
+        colors:
+          anyOf:
+          - type: array
+            items:
+              type: string
+          - type: 'null'
+          description: Dominant colors of the image as hex strings.
+      required:
+      - id
+      - image_url
+      - description
+      - tags
+      - colors
+    PlaceSearchResult:
+      type: object
+      properties:
+        place_id:
+          type: string
+          description: Google Maps Place ID.
+        name:
+          type:
+          - string
+          - 'null'
+        full_address:
+          type:
+          - string
+          - 'null'
+        coordinate:
+          anyOf:
+          - type: object
+            properties:
+              longitude:
+                type: number
+              latitude:
+                type: number
+            required:
+            - longitude
+            - latitude
+          - type: 'null'
+      required:
+      - place_id
+      - name
+      - full_address
+      - coordinate
+    Entity:
+      oneOf:
+      - type: object
+        properties:
+          type:
+            type: string
+            const: calendar
+          calendar:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              slug:
+                type:
+                - string
+                - 'null'
+              avatar_url:
+                type:
+                - string
+                - 'null'
+            required:
+            - id
+            - name
+            - slug
+        required:
+        - type
+        - calendar
+      - type: object
+        properties:
+          type:
+            type: string
+            const: event
+          event:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              slug:
+                type: string
+              cover_url:
+                type: string
+              start_at:
+                type: string
+                format: date-time
+                description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
+              end_at:
+                type: string
+                format: date-time
+                description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
+            required:
+            - id
+            - name
+            - slug
+            - cover_url
+            - start_at
+            - end_at
+        required:
+        - type
+        - event
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        avatar_url:
+          type: string
+        email:
+          type: string
+        first_name:
+          type:
+          - string
+          - 'null'
+        last_name:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - name
+      - avatar_url
+      - email
+      - first_name
+      - last_name
   securitySchemes:
     apiKeyAuth:
       type: apiKey

@@ -76,11 +76,14 @@ paths:
                             enum:
                             - '*'
                             - calendar.event.added
+                            - calendar.event.submitted
                             - calendar.person.subscribed
+                            - calendar.person.unsubscribed
                             - event.canceled
                             - event.created
                             - event.updated
                             - guest.registered
+                            - guest.refunded
                             - guest.updated
                             - ticket.registered
                         status:
@@ -93,7 +96,6 @@ paths:
                         created_at:
                           type: string
                           format: date-time
-                          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
                           description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
                       required:
                       - id
@@ -143,11 +145,14 @@ paths:
                       enum:
                       - '*'
                       - calendar.event.added
+                      - calendar.event.submitted
                       - calendar.person.subscribed
+                      - calendar.person.unsubscribed
                       - event.canceled
                       - event.created
                       - event.updated
                       - guest.registered
+                      - guest.refunded
                       - guest.updated
                       - ticket.registered
                   status:
@@ -160,7 +165,6 @@ paths:
                   created_at:
                     type: string
                     format: date-time
-                    pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
                     description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
                 required:
                 - id
@@ -187,7 +191,7 @@ paths:
               properties:
                 url:
                   type: string
-                  format: uri
+                  format: starts_with
                   pattern: ^http.*
                 event_types:
                   minItems: 1
@@ -197,11 +201,14 @@ paths:
                     enum:
                     - '*'
                     - calendar.event.added
+                    - calendar.event.submitted
                     - calendar.person.subscribed
+                    - calendar.person.unsubscribed
                     - event.canceled
                     - event.created
                     - event.updated
                     - guest.registered
+                    - guest.refunded
                     - guest.updated
                     - ticket.registered
               required:
@@ -227,11 +234,14 @@ paths:
                       enum:
                       - '*'
                       - calendar.event.added
+                      - calendar.event.submitted
                       - calendar.person.subscribed
+                      - calendar.person.unsubscribed
                       - event.canceled
                       - event.created
                       - event.updated
                       - guest.registered
+                      - guest.refunded
                       - guest.updated
                       - ticket.registered
                   status:
@@ -244,7 +254,6 @@ paths:
                   created_at:
                     type: string
                     format: date-time
-                    pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
                     description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
                 required:
                 - id
@@ -279,11 +288,14 @@ paths:
                     enum:
                     - '*'
                     - calendar.event.added
+                    - calendar.event.submitted
                     - calendar.person.subscribed
+                    - calendar.person.unsubscribed
                     - event.canceled
                     - event.created
                     - event.updated
                     - guest.registered
+                    - guest.refunded
                     - guest.updated
                     - ticket.registered
                 status:
@@ -313,11 +325,14 @@ paths:
                       enum:
                       - '*'
                       - calendar.event.added
+                      - calendar.event.submitted
                       - calendar.person.subscribed
+                      - calendar.person.unsubscribed
                       - event.canceled
                       - event.created
                       - event.updated
                       - guest.registered
+                      - guest.refunded
                       - guest.updated
                       - ticket.registered
                   status:
@@ -330,7 +345,6 @@ paths:
                   created_at:
                     type: string
                     format: date-time
-                    pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
                     description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
                 required:
                 - id
@@ -369,7 +383,6 @@ paths:
                 description: Empty response
                 properties: {}
                 additionalProperties: false
-                x-stainless-empty-object: true
       operationId: postV1WebhooksDelete
       x-operation-id-source: derived
 components:

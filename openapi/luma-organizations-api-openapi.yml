@@ -49,38 +49,7 @@ paths:
                   entries:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        name:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        avatar_url:
-                          type: string
-                        email:
-                          type: string
-                        first_name:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        last_name:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        api_id:
-                          type: string
-                          deprecated: true
-                          description: Use `id` instead.
-                      required:
-                      - id
-                      - name
-                      - avatar_url
-                      - email
-                      - first_name
-                      - last_name
-                      - api_id
+                      $ref: '#/components/schemas/UserLegacy'
                 required:
                 - entries
       operationId: getV1OrganizationsAdminsList
@@ -118,114 +87,7 @@ paths:
                   entries:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        name:
-                          type: string
-                        slug:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        avatar_url:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        url:
-                          type: string
-                        description:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        social_image_url:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        cover_image_url:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        is_personal:
-                          type: boolean
-                        location:
-                          anyOf:
-                          - type: object
-                            properties:
-                              city:
-                                type: string
-                                description: City name, e.g. 'New York'.
-                              region:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                                description: State or province, e.g. 'New York' or 'California'.
-                              country:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                                description: Country name, e.g. 'United States'. Null for cities in disputed territories where Google omits the country.
-                              country_code:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                                description: ISO 3166-1 alpha-2 country code, e.g. 'US'.
-                              timezone:
-                                type: string
-                                description: IANA timezone of the city, e.g. 'America/New_York'.
-                            required:
-                            - city
-                            - region
-                            - country
-                            - country_code
-                            - timezone
-                          - type: 'null'
-                          description: City the calendar is based in (e.g. for city calendars). Null when the calendar isn't tied to a place.
-                        coordinate:
-                          anyOf:
-                          - type: object
-                            properties:
-                              longitude:
-                                type: number
-                              latitude:
-                                type: number
-                            required:
-                            - longitude
-                            - latitude
-                          - type: 'null'
-                          description: Latitude and longitude of the calendar's primary location (e.g. city calendars). Null when the calendar isn't tied to a place.
-                        instagram_handle:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        twitter_handle:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        youtube_handle:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                        website:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                      required:
-                      - id
-                      - name
-                      - slug
-                      - avatar_url
-                      - url
-                      - description
-                      - social_image_url
-                      - cover_image_url
-                      - is_personal
-                      - location
-                      - coordinate
-                      - instagram_handle
-                      - twitter_handle
-                      - youtube_handle
-                      - website
+                      $ref: '#/components/schemas/Calendar'
                   has_more:
                     type: boolean
                   next_cursor:
@@ -247,7 +109,6 @@ paths:
         schema:
           type: string
           format: date-time
-          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
           description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
         description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
       - name: after
@@ -256,7 +117,6 @@ paths:
         schema:
           type: string
           format: date-time
-          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
           description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
         description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
       - name: pagination_cursor
@@ -310,77 +170,26 @@ paths:
                         start_at:
                           type: string
                           format: date-time
-                          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
                           description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
                         duration_interval:
                           type: string
+                          description: ISO 8601 Duration. For example, PT2H
                         end_at:
                           type: string
                           format: date-time
-                          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
                           description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
                         created_at:
                           type: string
                           format: date-time
-                          pattern: ^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z|([+-](?:[01]\d|2[0-3]):[0-5]\d)))$
                           description: ISO 8601 Datetime. For example, 2022-10-19T03:27:13.673Z
                         timezone:
                           type: string
                           description: IANA Timezone, e.g. America/New_York. https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
                         name:
                           type: string
-                        description:
-                          type: string
-                        description_md:
-                          type: string
                         geo_address_json:
                           anyOf:
-                          - type: object
-                            properties:
-                              address:
-                                type: string
-                              city:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                              region:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                              country:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                              city_state:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                              full_address:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                              google_maps_place_id:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                              apple_maps_place_id:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                              description:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
-                            required:
-                            - address
-                            - city
-                            - region
-                            - country
-                            - city_state
-                            - full_address
-                            - google_maps_place_id
-                            - apple_maps_place_id
-                            - description
+                          - $ref: '#/components/schemas/Address'
                           - type: 'null'
                         coordinate:
                           anyOf:
@@ -396,9 +205,9 @@ paths:
                           - type: 'null'
                           description: Latitude and longitude of the event location. Null for online events or when the address can't be geocoded.
                         meeting_url:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
+                          type:
+                          - string
+                          - 'null'
                         location_type:
                           type: string
                           enum:
@@ -417,307 +226,13 @@ paths:
                           enum:
                           - public
                           - guests-only
-                          description: Whether the event's address is shown to everyone or only to approved guests. This API always returns the full address.
+                          description: Whether the event's address is shown to everyone or only to approved guests. Events you manage always return the full address.
                         cover_url:
                           type: string
                         registration_questions:
                           type: array
                           items:
-                            anyOf:
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: agree-check
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: company
-                                collect_job_title:
-                                  anyOf:
-                                  - type: boolean
-                                  - type: 'null'
-                                job_title_label:
-                                  anyOf:
-                                  - type: string
-                                  - type: 'null'
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: dropdown
-                                options:
-                                  maxItems: 250
-                                  type: array
-                                  items:
-                                    type: string
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                              - options
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: github
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: instagram
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: linkedin
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: long-text
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: multi-select
-                                options:
-                                  maxItems: 250
-                                  type: array
-                                  items:
-                                    type: string
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                              - options
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: phone-number
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: telegram
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: text
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: twitter
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: url
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: youtube
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                label:
-                                  type: string
-                                required:
-                                  type: boolean
-                                question_type:
-                                  type: string
-                                  const: terms
-                                terms:
-                                  oneOf:
-                                  - type: object
-                                    properties:
-                                      content_type:
-                                        type: string
-                                        const: text
-                                      content_md:
-                                        type: string
-                                        description: Markdown content for the terms. Luma converts this to rich text internally.
-                                      collect_signature:
-                                        type: boolean
-                                      require_review:
-                                        description: When true, guests must open the hosted terms before accepting.
-                                        type: boolean
-                                    required:
-                                    - content_type
-                                    - content_md
-                                    - collect_signature
-                                  - type: object
-                                    properties:
-                                      content_type:
-                                        type: string
-                                        const: link
-                                      url:
-                                        type: string
-                                        format: uri
-                                      collect_signature:
-                                        type: boolean
-                                    required:
-                                    - content_type
-                                    - url
-                                    - collect_signature
-                              required:
-                              - id
-                              - label
-                              - required
-                              - question_type
-                              - terms
+                            $ref: '#/components/schemas/RegistrationQuestion'
                         url:
                           type: string
                         visibility:
@@ -732,6 +247,44 @@ paths:
                           - disabled
                           - enabled
                           description: '`enabled` if the event has a waitlist. New registrations join the waitlist once the event reaches capacity.'
+                        registration_open:
+                          type: boolean
+                          description: Whether the host is accepting registrations. When `false`, registration is closed and new guests can't sign up. Independent of capacity — a sold-out event with `waitlist_status` disabled still reports `true`.
+                        require_approval:
+                          type: boolean
+                          description: '`true` if registering requires host approval — i.e. any currently available ticket has approval turned on.'
+                        max_capacity:
+                          description: The maximum number of approved tickets allowed across all ticket types, as configured by the host. Null when the event has no capacity limit (individual ticket types may still be capped). `spots_remaining` reports how many are left.
+                          type:
+                          - number
+                          - 'null'
+                        can_register_for_multiple_tickets:
+                          type: boolean
+                          description: Whether a guest can register for multiple tickets in one registration (Group Registration). When `true`, each ticket counts toward `max_capacity`.
+                        spots_remaining:
+                          description: Spots left before the event hits its max capacity. Null when the event has no capacity limit (even if individual ticket types are capped). Refreshed by a background job, so this can lag a few seconds behind registrations.
+                          type:
+                          - number
+                          - 'null'
+                        display_price:
+                          anyOf:
+                          - type: object
+                            properties:
+                              amount:
+                                type: number
+                                description: Starting (lowest) ticket price in the currency's minor unit (e.g. cents for USD), tax included.
+                              currency:
+                                description: Lowercase ISO 4217 currency code, e.g. `usd`.
+                                $ref: '#/components/schemas/Currency'
+                              is_flexible:
+                                type: boolean
+                                description: '`true` for pay-what-you-want pricing — `amount` is the suggested price and guests can pay more.'
+                            required:
+                            - amount
+                            - currency
+                            - is_flexible
+                          - type: 'null'
+                          description: The starting ticket price shown on the event card. Null when registration is free — or, rarely, when nothing is currently purchasable (e.g. all paid tickets have expired). Refreshed by a background job, so this can lag a few seconds behind ticket changes.
                         feedback_email:
                           type: object
                           properties:
@@ -739,7 +292,7 @@ paths:
                               type: boolean
                               description: Whether to send the feedback email.
                             delay:
-                              description: How long after the event ends to send the feedback email. Defaults to PT0M (immediately). Maximum is P7D (7 days).
+                              description: How long after the event ends to send the feedback email. Defaults to PT0M (immediately). Maximum is P30D. A negative duration (e.g. -PT30M) sends it before the event ends — at most P1D before, and never before the event starts.
                               type: string
                           required:
                           - enabled
@@ -757,23 +310,23 @@ paths:
                           deprecated: true
                           description: Use `calendar_id` instead.
                         zoom_meeting_url:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
                           deprecated: true
                           description: Use `meeting_url` instead. Not all meetings use Zoom.
+                          type:
+                          - string
+                          - 'null'
                         geo_latitude:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
                           deprecated: true
                           description: Use `coordinate.latitude` instead.
+                          type:
+                          - string
+                          - 'null'
                         geo_longitude:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
                           deprecated: true
                           description: Use `coordinate.longitude` instead.
+                          type:
+                          - string
+                          - 'null'
                         managing_calendars:
                           type: array
                           items:
@@ -781,30 +334,42 @@ paths:
                             properties:
                               id:
                                 type: string
+                              launch_status:
+                                type: string
+                                enum:
+                                - launched
+                                - coming-soon
+                                - archived
+                                description: 'Calendar status: launched means Active; coming-soon shows a placeholder page; archived stops new follows and visitor event submissions.'
+                              tint_color:
+                                anyOf:
+                                - description: 'A hex color like ''#bb2dc7''. Shorthand (#rgb) is expanded and alpha channels (#rgba, #rrggbbaa) are stripped.'
+                                  type: string
+                                - type: 'null'
                               name:
                                 type: string
                               slug:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
+                                type:
+                                - string
+                                - 'null'
                               avatar_url:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
+                                type:
+                                - string
+                                - 'null'
                               url:
                                 type: string
                               description:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
+                                type:
+                                - string
+                                - 'null'
                               social_image_url:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
+                                type:
+                                - string
+                                - 'null'
                               cover_image_url:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
+                                type:
+                                - string
+                                - 'null'
                               is_personal:
                                 type: boolean
                               location:
@@ -815,20 +380,20 @@ paths:
                                       type: string
                                       description: City name, e.g. 'New York'.
                                     region:
-                                      anyOf:
-                                      - type: string
-                                      - type: 'null'
                                       description: State or province, e.g. 'New York' or 'California'.
+                                      type:
+                                      - string
+                                      - 'null'
                                     country:
-                                      anyOf:
-                                      - type: string
-                                      - type: 'null'
                                       description: Country name, e.g. 'United States'. Null for cities in disputed territories where Google omits the country.
+                                      type:
+                                      - string
+                                      - 'null'
                                     country_code:
-                                      anyOf:
-                                      - type: string
-                                      - type: 'null'
                                       description: ISO 3166-1 alpha-2 country code, e.g. 'US'.
+                                      type:
+                                      - string
+                                      - 'null'
                                     timezone:
                                       type: string
                                       description: IANA timezone of the city, e.g. 'America/New_York'.
@@ -854,21 +419,30 @@ paths:
                                 - type: 'null'
                                 description: Latitude and longitude of the calendar's primary location (e.g. city calendars). Null when the calendar isn't tied to a place.
                               instagram_handle:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
+                                type:
+                                - string
+                                - 'null'
                               twitter_handle:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
+                                type:
+                                - string
+                                - 'null'
                               youtube_handle:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
+                                type:
+                                - string
+                                - 'null'
+                              tiktok_handle:
+                                type:
+                                - string
+                                - 'null'
+                              linkedin_handle:
+                                description: LinkedIn path, e.g. '/company/luma' or '/in/username'.
+                                type:
+                                - string
+                                - 'null'
                               website:
-                                anyOf:
-                                - type: string
-                                - type: 'null'
+                                type:
+                                - string
+                                - 'null'
                               status:
                                 type: string
                                 enum:
@@ -877,6 +451,8 @@ paths:
                                 description: Status of the event on this calendar.
                             required:
                             - id
+                            - launch_status
+                            - tint_color
                             - name
                             - slug
                             - avatar_url
@@ -890,6 +466,8 @@ paths:
                             - instagram_handle
                             - twitter_handle
                             - youtube_handle
+                            - tiktok_handle
+                            - linkedin_handle
                             - website
                             - status
                           description: Calendars with manage access to this event, with the event's status on each. Calendars that only list the event without manage access are not included.
@@ -904,8 +482,6 @@ paths:
                       - created_at
                       - timezone
                       - name
-                      - description
-                      - description_md
                       - geo_address_json
                       - coordinate
                       - meeting_url
@@ -915,6 +491,12 @@ paths:
                       - url
                       - visibility
                       - waitlist_status
+                      - registration_open
+                      - require_approval
+                      - max_capacity
+                      - can_register_for_multiple_tickets
+                      - spots_remaining
+                      - display_price
                       - feedback_email
                       - api_id
                       - user_api_id
@@ -962,6 +544,70 @@ paths:
                 tint_color:
                   description: Tint color for the calendar in hex format (e.g. '#E3CBEF'). If not provided, a random color matching the default avatar will be used.
                   type: string
+                launch_status:
+                  description: Defaults to `launched` (Active). Use `coming-soon` to show a placeholder page while you set the calendar up.
+                  type: string
+                  enum:
+                  - launched
+                  - coming-soon
+                  - archived
+                website:
+                  description: Website URL. `https://` is added if missing.
+                  type:
+                  - string
+                  - 'null'
+                instagram_handle:
+                  description: Instagram handle or profile URL (e.g. 'luma' or 'https://instagram.com/luma').
+                  type:
+                  - string
+                  - 'null'
+                twitter_handle:
+                  description: X (Twitter) handle or profile URL (e.g. '@luma' or 'https://x.com/luma').
+                  type:
+                  - string
+                  - 'null'
+                youtube_handle:
+                  description: YouTube handle or channel URL (e.g. '@luma' or 'https://youtube.com/@luma').
+                  type:
+                  - string
+                  - 'null'
+                tiktok_handle:
+                  description: TikTok handle or profile URL (e.g. '@luma' or 'https://tiktok.com/@luma').
+                  type:
+                  - string
+                  - 'null'
+                linkedin_handle:
+                  description: LinkedIn company or profile URL (e.g. 'https://linkedin.com/company/luma').
+                  type:
+                  - string
+                  - 'null'
+                location:
+                  description: 'City the calendar is based in. Use `{ type: ''lookup'', query }` to search Google Maps for a city, or `{ type: ''google'', place_id }` with a city''s Google Places ID. The calendar''s timezone and coordinate come from the city.'
+                  oneOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        const: google
+                      place_id:
+                        type: string
+                        minLength: 1
+                    required:
+                    - type
+                    - place_id
+                    description: Resolves a Google Maps Place ID for a city.
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        const: lookup
+                      query:
+                        type: string
+                        minLength: 1
+                    required:
+                    - type
+                    - query
+                    description: Searches Google Maps for a city matching `query` (e.g. "Miami Beach, FL") and uses the top result.
               required:
               - name
       responses:
@@ -970,115 +616,7 @@ paths:
           content:
             application/json:
               schema:
-                $schema: https://json-schema.org/draft/2020-12/schema
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  slug:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  avatar_url:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  url:
-                    type: string
-                  description:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  social_image_url:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  cover_image_url:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  is_personal:
-                    type: boolean
-                  location:
-                    anyOf:
-                    - type: object
-                      properties:
-                        city:
-                          type: string
-                          description: City name, e.g. 'New York'.
-                        region:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                          description: State or province, e.g. 'New York' or 'California'.
-                        country:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                          description: Country name, e.g. 'United States'. Null for cities in disputed territories where Google omits the country.
-                        country_code:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                          description: ISO 3166-1 alpha-2 country code, e.g. 'US'.
-                        timezone:
-                          type: string
-                          description: IANA timezone of the city, e.g. 'America/New_York'.
-                      required:
-                      - city
-                      - region
-                      - country
-                      - country_code
-                      - timezone
-                    - type: 'null'
-                    description: City the calendar is based in (e.g. for city calendars). Null when the calendar isn't tied to a place.
-                  coordinate:
-                    anyOf:
-                    - type: object
-                      properties:
-                        longitude:
-                          type: number
-                        latitude:
-                          type: number
-                      required:
-                      - longitude
-                      - latitude
-                    - type: 'null'
-                    description: Latitude and longitude of the calendar's primary location (e.g. city calendars). Null when the calendar isn't tied to a place.
-                  instagram_handle:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  twitter_handle:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  youtube_handle:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  website:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                required:
-                - id
-                - name
-                - slug
-                - avatar_url
-                - url
-                - description
-                - social_image_url
-                - cover_image_url
-                - is_personal
-                - location
-                - coordinate
-                - instagram_handle
-                - twitter_handle
-                - youtube_handle
-                - website
+                $ref: '#/components/schemas/Calendar'
       operationId: postV2OrganizationsCalendarsCreate
       x-operation-id-source: derived
   /v1/organizations/events/transfer-calendar:
@@ -1114,10 +652,805 @@ paths:
                 description: Empty response
                 properties: {}
                 additionalProperties: false
-                x-stainless-empty-object: true
       operationId: postV1OrganizationsEventsTransferCalendar
       x-operation-id-source: derived
 components:
+  schemas:
+    Calendar:
+      type: object
+      properties:
+        id:
+          type: string
+        launch_status:
+          type: string
+          enum:
+          - launched
+          - coming-soon
+          - archived
+          description: 'Calendar status: launched means Active; coming-soon shows a placeholder page; archived stops new follows and visitor event submissions.'
+        tint_color:
+          anyOf:
+          - description: 'A hex color like ''#bb2dc7''. Shorthand (#rgb) is expanded and alpha channels (#rgba, #rrggbbaa) are stripped.'
+            type: string
+          - type: 'null'
+        name:
+          type: string
+        slug:
+          type:
+          - string
+          - 'null'
+        avatar_url:
+          type:
+          - string
+          - 'null'
+        url:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        social_image_url:
+          type:
+          - string
+          - 'null'
+        cover_image_url:
+          type:
+          - string
+          - 'null'
+        is_personal:
+          type: boolean
+        location:
+          anyOf:
+          - type: object
+            properties:
+              city:
+                type: string
+                description: City name, e.g. 'New York'.
+              region:
+                description: State or province, e.g. 'New York' or 'California'.
+                type:
+                - string
+                - 'null'
+              country:
+                description: Country name, e.g. 'United States'. Null for cities in disputed territories where Google omits the country.
+                type:
+                - string
+                - 'null'
+              country_code:
+                description: ISO 3166-1 alpha-2 country code, e.g. 'US'.
+                type:
+                - string
+                - 'null'
+              timezone:
+                type: string
+                description: IANA timezone of the city, e.g. 'America/New_York'.
+            required:
+            - city
+            - region
+            - country
+            - country_code
+            - timezone
+          - type: 'null'
+          description: City the calendar is based in (e.g. for city calendars). Null when the calendar isn't tied to a place.
+        coordinate:
+          anyOf:
+          - type: object
+            properties:
+              longitude:
+                type: number
+              latitude:
+                type: number
+            required:
+            - longitude
+            - latitude
+          - type: 'null'
+          description: Latitude and longitude of the calendar's primary location (e.g. city calendars). Null when the calendar isn't tied to a place.
+        instagram_handle:
+          type:
+          - string
+          - 'null'
+        twitter_handle:
+          type:
+          - string
+          - 'null'
+        youtube_handle:
+          type:
+          - string
+          - 'null'
+        tiktok_handle:
+          type:
+          - string
+          - 'null'
+        linkedin_handle:
+          description: LinkedIn path, e.g. '/company/luma' or '/in/username'.
+          type:
+          - string
+          - 'null'
+        website:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - launch_status
+      - tint_color
+      - name
+      - slug
+      - avatar_url
+      - url
+      - description
+      - social_image_url
+      - cover_image_url
+      - is_personal
+      - location
+      - coordinate
+      - instagram_handle
+      - twitter_handle
+      - youtube_handle
+      - tiktok_handle
+      - linkedin_handle
+      - website
+    Currency:
+      type: string
+      enum:
+      - solana_sol
+      - solana_usdc
+      - aed
+      - afn
+      - all
+      - amd
+      - ang
+      - aoa
+      - ars
+      - aud
+      - awg
+      - azn
+      - bam
+      - bbd
+      - bdt
+      - bgn
+      - bhd
+      - bif
+      - bmd
+      - bnd
+      - bob
+      - brl
+      - bsd
+      - bwp
+      - byn
+      - bzd
+      - cad
+      - cdf
+      - chf
+      - clp
+      - cny
+      - cop
+      - crc
+      - cve
+      - czk
+      - djf
+      - dkk
+      - dop
+      - dzd
+      - egp
+      - etb
+      - eur
+      - fjd
+      - fkp
+      - gbp
+      - gel
+      - ghs
+      - gip
+      - gmd
+      - gnf
+      - gtq
+      - gyd
+      - hkd
+      - hnl
+      - htg
+      - huf
+      - idr
+      - ils
+      - inr
+      - isk
+      - jmd
+      - jod
+      - jpy
+      - kes
+      - kgs
+      - khr
+      - kmf
+      - krw
+      - kwd
+      - kyd
+      - kzt
+      - lak
+      - lbp
+      - lkr
+      - lrd
+      - lsl
+      - mad
+      - mdl
+      - mga
+      - mkd
+      - mmk
+      - mnt
+      - mop
+      - mur
+      - mvr
+      - mwk
+      - mxn
+      - myr
+      - mzn
+      - nad
+      - ngn
+      - nio
+      - nok
+      - npr
+      - nzd
+      - omr
+      - pab
+      - pen
+      - pgk
+      - php
+      - pkr
+      - pln
+      - pyg
+      - qar
+      - ron
+      - rsd
+      - rub
+      - rwf
+      - sar
+      - sbd
+      - scr
+      - sek
+      - sgd
+      - shp
+      - sle
+      - sos
+      - srd
+      - std
+      - szl
+      - thb
+      - tjs
+      - tnd
+      - top
+      - try
+      - ttd
+      - twd
+      - tzs
+      - uah
+      - ugx
+      - usd
+      - uyu
+      - uzs
+      - vnd
+      - vuv
+      - wst
+      - xaf
+      - xcd
+      - xof
+      - xpf
+      - yer
+      - zar
+      - zmw
+    RegistrationQuestion:
+      anyOf:
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: agree-check
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: company
+          collect_job_title:
+            type:
+            - boolean
+            - 'null'
+          job_title_label:
+            type:
+            - string
+            - 'null'
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: github
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: instagram
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: linkedin
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: phone-number
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: select
+          options:
+            maxItems: 250
+            type: array
+            items:
+              type: string
+          multiple:
+            description: When true, guests can pick more than one option.
+            type:
+            - boolean
+            - 'null'
+        required:
+        - id
+        - label
+        - required
+        - question_type
+        - options
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: telegram
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: text
+          multiline:
+            description: When true, guests get a multi-line text area.
+            type:
+            - boolean
+            - 'null'
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: twitter
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: url
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          source:
+            type: object
+            properties:
+              type:
+                type: string
+                const: calendar
+              calendar_api_id:
+                type: string
+              question_id:
+                type: string
+            required:
+            - type
+            - calendar_api_id
+            - question_id
+          question_type:
+            type: string
+            const: youtube
+        required:
+        - id
+        - label
+        - required
+        - question_type
+      - type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          question_type:
+            type: string
+            const: terms
+          terms:
+            oneOf:
+            - type: object
+              properties:
+                content_type:
+                  type: string
+                  const: text
+                content_md:
+                  type: string
+                  description: Markdown content for the terms. Luma converts this to rich text internally.
+                collect_signature:
+                  type: boolean
+                require_review:
+                  description: When true, guests must open the hosted terms before accepting.
+                  type: boolean
+              required:
+              - content_type
+              - content_md
+              - collect_signature
+            - type: object
+              properties:
+                content_type:
+                  type: string
+                  const: link
+                url:
+                  type: string
+                  format: uri
+                collect_signature:
+                  type: boolean
+              required:
+              - content_type
+              - url
+              - collect_signature
+        required:
+        - id
+        - label
+        - required
+        - question_type
+        - terms
+    UserLegacy:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        avatar_url:
+          type: string
+        email:
+          type: string
+        first_name:
+          type:
+          - string
+          - 'null'
+        last_name:
+          type:
+          - string
+          - 'null'
+        api_id:
+          type: string
+          deprecated: true
+          description: Use `id` instead.
+      required:
+      - id
+      - name
+      - avatar_url
+      - email
+      - first_name
+      - last_name
+      - api_id
+    Address:
+      type: object
+      properties:
+        address:
+          type: string
+        city:
+          type:
+          - string
+          - 'null'
+        region:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        city_state:
+          type:
+          - string
+          - 'null'
+        full_address:
+          type:
+          - string
+          - 'null'
+        google_maps_place_id:
+          type:
+          - string
+          - 'null'
+        apple_maps_place_id:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+      required:
+      - address
+      - city
+      - region
+      - country
+      - city_state
+      - full_address
+      - google_maps_place_id
+      - apple_maps_place_id
+      - description
   securitySchemes:
     apiKeyAuth:
       type: apiKey
